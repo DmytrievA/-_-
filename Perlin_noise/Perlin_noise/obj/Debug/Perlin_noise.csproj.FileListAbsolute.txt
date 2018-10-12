@@ -1,0 +1,8 @@
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.exe.config
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.exe
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.pdb
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.csprojResolveAssemblyReference.cache
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.exe
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.pdb
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.Properties.Resources.resources
+E:\srudio_workspace\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.csproj.GenerateResource.Cache
