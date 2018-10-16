@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Perlin_noise
 {
-    
+
 
     class Program
     {
@@ -22,7 +22,7 @@ namespace Perlin_noise
     {
         public double X;
         public double Y;
-        public DPoint(double x,double y)
+        public DPoint(double x, double y)
         {
             X = x;
             Y = y;
@@ -35,19 +35,21 @@ namespace Perlin_noise
         public string Name { get; set; }
         byte[] table;
 
-        public PerlinNoise(string name = "Picture1.bmp")
+        public PerlinNoise(string name = "ge.jpg")
         {
             try
             {
-                picture = new Bitmap(name);
+                picture = (Bitmap)Image.FromFile(name);
                 Name = name;
                 Console.WriteLine($"Was loaded {Name}");
+                Console.ReadKey();
                 FillTable();
             }
             catch
             {
                 Console.WriteLine("Name of picture is wrong. loaded default picture");
-                Name = "Picture1.bmp";
+                Console.ReadKey();
+                Name = "Picture.bmp";
                 try
                 {
                     picture = new Bitmap(Name);
@@ -55,6 +57,7 @@ namespace Perlin_noise
                 catch
                 {
                     Console.WriteLine("Cannot open Picture1.bmp. Plese put it in the same folder with .exe file");
+                    Console.ReadKey();
                     return;
                 }
                 Console.WriteLine($"Was loaded {Name}");
@@ -64,7 +67,7 @@ namespace Perlin_noise
 
         private void FillTable()
         {
-            table = new byte[picture.Height+picture.Width];
+            table = new byte[picture.Height + picture.Width];
             var rand = new Random();
             rand.NextBytes(table);
         }
@@ -72,60 +75,53 @@ namespace Perlin_noise
         public void Noise(int oct = 5)
         {
             oct = oct < 5 ? 5 : oct;
-            for (int i = 0; i < picture.Width; i +=oct)
-                for (int j = 0; j < picture.Height; j +=oct)
+            for (int i = 0; i < picture.Width; i++)
+            {
+                for (int j = 0; j < picture.Height; j++)
                 {
-                    for (int k = 0; k < oct; k++)
-                    {
-                        if (i + k >= picture.Width)
-                            continue;
-                        for (int l = 0; l < oct; l++)
-                        {
-                            if (j + l >= picture.Height)
-                                continue;
+                    DPoint topLeftVec = GetPseudoRandomVector(i, j);
+                    DPoint topRightVec = GetPseudoRandomVector(i + 1, j);
+                    DPoint bottomLeftVec = GetPseudoRandomVector(i, j + 1);
+                    DPoint bottomRightVec = GetPseudoRandomVector(i + 1, j + 1);
 
-                            DPoint topLeftVec = GetPseudoRandomVector(i, j);
-                            DPoint topRightVec = GetPseudoRandomVector(i + oct, j);
-                            DPoint bottomLeftVec = GetPseudoRandomVector(i, j + oct);
-                            DPoint bottomRightVec = GetPseudoRandomVector(i + oct, j + oct);
+                    double paramX = i % oct / (double)oct;
+                    double paramY = j % oct / (double)oct;
 
-                            double paramX = i%oct / (double)oct;
-                            double paramY = j%oct / (double)oct;
+                    DPoint fromTopLeftVec = new DPoint(paramX, paramY);
+                    DPoint fromTopRightVec = new DPoint(paramX, 1 - paramY);
+                    DPoint fromBottomLeftVec = new DPoint(1 - paramX, paramY);
+                    DPoint fromBottomRightVec = new DPoint(1 - paramX, 1 - paramY);
 
-                            DPoint fromTopLeftVec = new DPoint(paramX, paramY);
-                            DPoint fromTopRightVec = new DPoint(paramX, 1 - paramY);
-                            DPoint fromBottomLeftVec = new DPoint(1 - paramX, paramY);
-                            DPoint fromBottomRightVec = new DPoint(1 - paramX, 1 - paramY);
+                    double dotTopLeftVec = Dot(topLeftVec, fromTopLeftVec);
+                    double dotTopRightVec = Dot(topRightVec, fromTopRightVec);
+                    double dotBottomLeftVec = Dot(bottomLeftVec, fromBottomLeftVec);
+                    double dotBottomRightVec = Dot(bottomRightVec, fromBottomRightVec);
 
-                            double dotTopLeftVec = Dot(topLeftVec, fromTopLeftVec);
-                            double dotTopRightVec = Dot(topRightVec, fromTopRightVec);
-                            double dotBottomLeftVec = Dot(bottomLeftVec, fromBottomLeftVec);
-                            double dotBottomRightVec = Dot(bottomRightVec, fromBottomRightVec);
+                    paramX = Modify(paramX);
+                    paramY = Modify(paramY);
 
-                            paramX = Modify(paramX);
-                            paramY = Modify(paramY);
+                    double interTop = LInterp(dotTopLeftVec, dotBottomRightVec, paramX);
+                    double interBottom = LInterp(dotBottomLeftVec, dotBottomRightVec, paramX);
 
-                            double interTop = LInterp(dotTopLeftVec, dotBottomRightVec, paramX);
-                            double interBottom = LInterp(dotBottomLeftVec, dotBottomRightVec, paramX);
+                    double interY = LInterp(interTop, interBottom, paramY);
 
-                            double interY = LInterp(interTop, interBottom, paramY);
+                    var px = picture.GetPixel(i, j);
+                    picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
+                    picture.SetPixel(i, j, Color.FromArgb(GetChangedInt(px, interY)));
 
-                            var px = picture.GetPixel(i , j );
-                            //picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
-                            picture.SetPixel(i, j, Color.FromArgb(GetChangedInt(px,interY)));
-
-                        }
-                    }
                 }
-            picture.Save("NewPicture.bmp");
+            }
+
+
+            picture.Save("newge.jpg");
         }
 
         DPoint GetPseudoRandomVector(int x, int y)
         {
-            DPoint res ;
-            var temp = (x * 3001 + y * 7) * 307 & (picture.Height + picture.Width-1);
-            temp = table[temp] & 7;
-            switch(temp)
+            DPoint res;
+            var temp = (x * 3001 + y * 7) * 307 % (picture.Height + picture.Width - 1);
+            temp = table[temp] % 7;
+            switch (temp)
             {
                 case 0:
                     res = new DPoint(1, 0);
@@ -159,7 +155,7 @@ namespace Perlin_noise
         double LInterp(double left, double right, double param)
             => (right + left) * param - left;
 
-        double Modify(double t) 
+        double Modify(double t)
             => t * t * (3.0 - 2.0 * t);
 
         int GetChangedInt(Color color, double mul)
@@ -170,21 +166,19 @@ namespace Perlin_noise
             return R << 16 | G << 8 | B;
         }
 
-        int GetInt(Color color){
-            return (int) color.R<<16| (int)color.G << 8 | (int) color.B;
+        int GetInt(Color color)
+        {
+            return (int)color.R << 16 | (int)color.G << 8 | (int)color.B;
         }
 
         //scalar mul
-        double Dot(DPoint vec1, DPoint vec2) 
-            =>vec1.X*vec2.X + vec1.Y*vec2.Y;
-        
-    }
-
-    class F
-    {
+        double Dot(DPoint vec1, DPoint vec2)
+            => vec1.X * vec2.X + vec1.Y * vec2.Y;
 
     }
 
 
-   
+
+
+
 }
