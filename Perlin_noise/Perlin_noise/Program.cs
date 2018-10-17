@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+using System.Threading;
 namespace Perlin_noise
 {
 
@@ -13,8 +13,12 @@ namespace Perlin_noise
     {
         static void Main(string[] args)
         {
+            
             var noise = new PerlinNoise();
-            noise.Noise();
+            noise.ParalelNoise();
+            //noise.Noise(900,500);
+            //Console.WriteLine(noise.picture.Width);
+            //Console.ReadKey();
         }
     }
 
@@ -31,9 +35,11 @@ namespace Perlin_noise
 
     class PerlinNoise
     {
-        Bitmap picture;
+        public Bitmap picture;
         public string Name { get; set; }
         byte[] table;
+        int processors = 2;   // количество процессоров
+        
 
         public PerlinNoise(string name = "ge.jpg")
         {
@@ -42,13 +48,13 @@ namespace Perlin_noise
                 picture = (Bitmap)Image.FromFile(name);
                 Name = name;
                 Console.WriteLine($"Was loaded {Name}");
-                Console.ReadKey();
+                
                 FillTable();
             }
             catch
             {
                 Console.WriteLine("Name of picture is wrong. loaded default picture");
-                Console.ReadKey();
+                
                 Name = "Picture.bmp";
                 try
                 {
@@ -57,7 +63,7 @@ namespace Perlin_noise
                 catch
                 {
                     Console.WriteLine("Cannot open Picture1.bmp. Plese put it in the same folder with .exe file");
-                    Console.ReadKey();
+                    
                     return;
                 }
                 Console.WriteLine($"Was loaded {Name}");
@@ -71,12 +77,50 @@ namespace Perlin_noise
             var rand = new Random();
             rand.NextBytes(table);
         }
+        
 
-        public void Noise(int oct = 5)
+        public void ParalelNoise()
         {
-            oct = oct < 5 ? 5 : oct;
-            for (int i = 0; i < picture.Width; i++)
+            Param ForFirstThread = new Param();
+            ForFirstThread.Start = 0;
+            ForFirstThread.Number = picture.Width / processors;
+            Param ForSecondThread = new Param();
+            ForSecondThread.Start = picture.Width / processors + 1;
+            ForSecondThread.Number = 1000;
+            Thread SecondThread = new Thread(new ParameterizedThreadStart(Noise));
+            SecondThread.Start(ForSecondThread);
+            Noise(ForFirstThread);
+            
+        }
+        public class Param // в делегат ParameterizedThreadStart передать более одного параметра можно только через класс
+        {
+            public int Start;
+            public int Number;
+            public Param()
             {
+
+            }
+            public Param(int Start,int Number)
+            {
+                this.Start = Start;
+                this.Number = Number;
+            }
+        }
+        public void Noise(object param) // делегат ParameterizedThreadStart принимает только переменную типа object
+        {
+
+            Param secparam = (Param)param;
+            int Start = secparam.Start;
+            int Number = secparam.Number;
+            if (Number > picture.Width - Start)
+                Number = picture.Width - Start;
+
+
+            int oct = 5;
+
+            for (int i = Start; i < Start + Number; i++)
+            {
+            
                 for (int j = 0; j < picture.Height; j++)
                 {
                     DPoint topLeftVec = GetPseudoRandomVector(i, j);
@@ -106,7 +150,7 @@ namespace Perlin_noise
                     double interY = LInterp(interTop, interBottom, paramY);
 
                     var px = picture.GetPixel(i, j);
-                    picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
+                   // picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
                     picture.SetPixel(i, j, Color.FromArgb(GetChangedInt(px, interY)));
 
                 }
@@ -177,7 +221,7 @@ namespace Perlin_noise
 
     }
 
-
+    
 
 
 
