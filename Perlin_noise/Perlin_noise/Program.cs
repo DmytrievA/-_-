@@ -14,7 +14,8 @@ namespace Perlin_noise
         static void Main(string[] args)
         {
             var noise = new PerlinNoise();
-            noise.Noise();
+            noise.Noise(5);
+            noise.Noise(25);
         }
     }
 
@@ -125,8 +126,8 @@ namespace Perlin_noise
 
         private void CreatePseudoRandomVectors(int oct)
         {
-            int h = picture.Height % oct == 0 ? picture.Height / oct +1: Convert.ToInt32(Math.Ceiling(picture.Height / (double)oct));
-            int w = picture.Width % oct == 0 ? picture.Width / oct +1 : Convert.ToInt32(Math.Ceiling(picture.Width / (double)oct));
+            int h = picture.Height % oct == 0 ? picture.Height / oct : Convert.ToInt32(Math.Ceiling(picture.Height / (double)oct));
+            int w = picture.Width % oct == 0 ? picture.Width / oct  : Convert.ToInt32(Math.Ceiling(picture.Width / (double)oct));
 
             vectors = new DPoint[w+1,h+1];
 
@@ -143,30 +144,30 @@ namespace Perlin_noise
         {
             DPoint res ;
             var temp = (int)(((x * 1836311903) ^ (y * 2971215073) + 4807526976) & (picture.Height + picture.Width-1));
-            temp = table[temp] & 3;
+            temp = table[temp] & 7;
             switch(temp)
             {
                 case 0:
                     res = new DPoint(1, 1);
                     break;
                 case 1:
-                    res = new DPoint(-1, 1);
+                    res = new DPoint(-Math.Sqrt(2.0), 0);      
                     break;
                 case 2:
                     res = new DPoint(-1, -1);
                     break;
-                //case 3:
-                //    res = new DPoint(Math.Cos(0.185398), Math.Sin(0.185398));
-                //    break;
-                //case 4:
-                //    res = new DPoint(Math.Cos(-0.66), Math.Sin(-0.66));
-                //    break;
-                //case 5:
-                //    res = new DPoint(Math.Cos(1.12), Math.Sin(1.12));
-                //    break;
-                //case 6:
-                //    res = new DPoint(Math.Cos(2.57), Math.Sin(-2.57));
-                //    break;
+                case 3:
+                    res = new DPoint(Math.Sqrt(2.0), Math.Sqrt(2.0));
+                    break;
+                case 4:
+                    res = new DPoint(Math.Sqrt(2.0), -Math.Sqrt(2.0));
+                    break;
+                case 5:
+                    res = new DPoint(-1, 1);
+                    break;
+                case 6:
+                    res = new DPoint(-Math.Sqrt(2.0), -Math.Sqrt(2.0));
+                    break;
                 default:
                     res = new DPoint(1, -1);
                     break;
@@ -186,7 +187,7 @@ namespace Perlin_noise
             int R = Convert.ToInt32(color.R * mul);
             int G = Convert.ToInt32(color.G * mul);
             int B = Convert.ToInt32(color.B * mul);
-            return R << 16 | G << 8 | B;
+            return (R<<16)|(G<<8)|B;
         }
 
         int GetInt(Color color){
