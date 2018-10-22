@@ -13,12 +13,19 @@ namespace Perlin_noise
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             
             var noise = new PerlinNoise();
             noise.ParalelNoise();
             //noise.Noise(900,500);
             //Console.WriteLine(noise.picture.Width);
             //Console.ReadKey();
+=======
+           
+        var noise = new PerlinNoise();
+            //noise.Noise();
+            
+>>>>>>> Dmytriiev
         }
     }
 
@@ -35,11 +42,19 @@ namespace Perlin_noise
 
     class PerlinNoise
     {
+<<<<<<< HEAD
         public Bitmap picture;
         public string Name { get; set; }
         byte[] table;
         int processors = 2;   // количество процессоров
         
+=======
+        
+        Bitmap picture;
+        public string Name { get; set; }
+        byte[] table;
+        DPoint[,] vectors;
+>>>>>>> Dmytriiev
 
         public PerlinNoise(string name = "ge.jpg")
         {
@@ -53,9 +68,14 @@ namespace Perlin_noise
             }
             catch
             {
+<<<<<<< HEAD
                 Console.WriteLine("Name of picture is wrong. loaded default picture");
                 
                 Name = "Picture.bmp";
+=======
+                Console.WriteLine("Name of picture is wrong. loading default picture");
+                Name = "Picture1.bmp";
+>>>>>>> Dmytriiev
                 try
                 {
                     picture = new Bitmap(Name);
@@ -81,6 +101,7 @@ namespace Perlin_noise
 
         public void ParalelNoise()
         {
+<<<<<<< HEAD
             Param ForFirstThread = new Param();
             ForFirstThread.Start = 0;
             ForFirstThread.Number = picture.Width / processors;
@@ -153,6 +174,55 @@ namespace Perlin_noise
                    // picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
                     picture.SetPixel(i, j, Color.FromArgb(GetChangedInt(px, interY)));
 
+=======
+            oct = oct < 5 ? 5 : oct;
+
+            CreatePseudoRandomVectors(oct);
+            for (int i = 0; i < picture.Width; i +=oct)
+                for (int j = 0; j < picture.Height; j +=oct)
+                {
+                    DPoint topLeftVec = vectors[i / oct, j / oct];
+                    DPoint topRightVec = vectors[i/oct + 1, j / oct];
+                    DPoint bottomLeftVec = vectors[i / oct, j/oct + 1];
+                    DPoint bottomRightVec = vectors[ i / oct + 1, j / oct + 1];
+
+                    for (int k = 0; k < oct; k++)
+                    {
+                        if (i + k >= picture.Width)
+                            continue;
+                        for (int l = 0; l < oct; l++)
+                        {
+                            if (j + l >= picture.Height)
+                                continue;
+
+                            double paramX = k / (double)oct;
+                            double paramY = l / (double)oct;
+
+                            DPoint fromTopLeftVec = new DPoint(paramX, paramY);
+                            DPoint fromTopRightVec = new DPoint(paramX, 1 - paramY);
+                            DPoint fromBottomLeftVec = new DPoint(1 - paramX, paramY);
+                            DPoint fromBottomRightVec = new DPoint(1 - paramX, 1 - paramY);
+
+                            double dotTopLeftVec = Dot(topLeftVec, fromTopLeftVec);
+                            double dotTopRightVec = Dot(topRightVec, fromTopRightVec);
+                            double dotBottomLeftVec = Dot(bottomLeftVec, fromBottomLeftVec);
+                            double dotBottomRightVec = Dot(bottomRightVec, fromBottomRightVec);
+
+                            paramX = Modify(paramX);
+                            paramY = Modify(paramY);
+
+                            double interTop = LInterp(dotTopLeftVec, dotTopRightVec, paramX);
+                            double interBot = LInterp(dotBottomLeftVec, dotBottomRightVec, paramX);
+
+                            double interY = LInterp(interTop, interBot, paramY);
+
+                            var px = picture.GetPixel(i+k , j+l );
+                            //picture.SetPixel(i + k, j + l, Color.FromArgb(Convert.ToInt32(interY * 100000000)));
+                            picture.SetPixel(i+k, j+l, Color.FromArgb(GetChangedInt(Color.Gray,interY)));
+
+                        }
+                    }
+>>>>>>> Dmytriiev
                 }
             }
 
@@ -160,24 +230,47 @@ namespace Perlin_noise
             picture.Save("newge.jpg");
         }
 
+        private void CreatePseudoRandomVectors(int oct)
+        {
+            int h = picture.Height % oct == 0 ? picture.Height / oct : picture.Height / oct + 1;
+            int w = picture.Width % oct == 0 ? picture.Width / oct : picture.Width /oct + 1;
+
+            vectors = new DPoint[w + 1,h + 1];
+
+            for (int i = w; i >= 0; i--)
+            {
+                for (int j = h; j >= 0; j--)
+                {
+                    vectors[i, j] = GetPseudoRandomVector(i, j);
+                }
+            }
+        }
+
         DPoint GetPseudoRandomVector(int x, int y)
         {
+<<<<<<< HEAD
             DPoint res;
             var temp = (x * 3001 + y * 7) * 307 % (picture.Height + picture.Width - 1);
             temp = table[temp] % 7;
             switch (temp)
+=======
+            DPoint res ;
+            var temp = (int)(((x * 1836311903) ^ (y * 2971215073) + 4807526976) & (picture.Height + picture.Width-1));
+            temp = table[temp] & 7;
+            switch(temp)
+>>>>>>> Dmytriiev
             {
                 case 0:
-                    res = new DPoint(1, 0);
+                    res = new DPoint(1, 1);
                     break;
                 case 1:
-                    res = new DPoint(0, 1);
+                    res = new DPoint(-1, 1);
                     break;
                 case 2:
-                    res = new DPoint(-1, 0);
+                    res = new DPoint(-1, -1);
                     break;
                 case 3:
-                    res = new DPoint(0, -1);
+                    res = new DPoint(Math.Cos(0.185398), Math.Sin(0.185398));
                     break;
                 case 4:
                     res = new DPoint(Math.Cos(-0.66), Math.Sin(-0.66));
@@ -189,7 +282,7 @@ namespace Perlin_noise
                     res = new DPoint(Math.Cos(2.57), Math.Sin(-2.57));
                     break;
                 default:
-                    res = new DPoint(Math.Cos(0.185398), Math.Sin(0.185398));
+                    res = new DPoint(1, -1);
                     break;
             }
             return res;
@@ -199,8 +292,13 @@ namespace Perlin_noise
         double LInterp(double left, double right, double param)
             => (right + left) * param - left;
 
+<<<<<<< HEAD
         double Modify(double t)
             => t * t * (3.0 - 2.0 * t);
+=======
+        double Modify(double t) 
+            => t * t * t * (t * (t * 6 - 15) + 10);
+>>>>>>> Dmytriiev
 
         int GetChangedInt(Color color, double mul)
         {
