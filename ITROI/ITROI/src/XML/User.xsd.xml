@@ -1,0 +1,8 @@
+<user:user xmlns:user="http://www.itroi.org/user">
+  <user:user_id>ghj</user:user_id>
+  <user:name>string</user:name>
+  <user:surname>string</user:surname>
+  <user:email>string</user:email>
+  <user:login>string</user:login>
+  <user:password>string</user:password>
+</user:user>
