@@ -6,19 +6,37 @@ targetNamespace="http://www.itroi.org/user"
 xmlns:lol="http://www.itroi.org/user"
 xmlns:task="http://www.itroi.org/task">
   <xs:element name="user" type="lol:userType"/>
-  <xs:simpleType name="user_id">
+  <xs:simpleType name="id">
     <xs:restriction base="xs:unsignedShort">
-      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="1"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="gender">
+      <xs:restriction base="xs:string">
+        <xs:pattern value="male|female"/>
+      </xs:restriction>
+    </xs:simpleType>
+  <xs:simpleType name="password">
+  <xs:restriction base="xs:string">
+    <xs:length value="6"/>
+  </xs:restriction>
+</xs:simpleType>
+  <xs:simpleType name="login">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="6"/>
+      <xs:maxLength value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="userType">
     <xs:sequence>
-      <xs:element type="lol:user_id" name="user_id"/>
-      <xs:element type="xs:string" name="name"/>
-      <xs:element type="xs:string" name="surname"/>
-      <xs:element type="xs:string" name="email"/>
-      <xs:element type="xs:string" name="login"/>
-      <xs:element type="xs:string" name="password"/>
+     <xs:element type="lol:id" name="id" maxOccurs="1"/>
+      <xs:element type="xs:string" name="name" maxOccurs="1"/>
+      <xs:element type="xs:string" name="surname" maxOccurs="1"/>
+      <xs:element type="xs:string" name="email" maxOccurs="1"/>
+      <xs:element type="lol:login" name="login" maxOccurs="1"/>
+      <xs:element type="lol:password" name="password" maxOccurs="1" />
+      <xs:element type="lol:gender" name="gender" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

@@ -9,9 +9,9 @@
   <xs:element name="Day" type="day:DayType"/>
   <xs:complexType name="DayType">
     <xs:sequence>
-      <xs:element name="DayOfWeek" type="day:DayOfWeekType"></xs:element>
-      <xs:element name="date" type="xs:date"></xs:element>
-      <xs:element name="Tasks" type="day:TasksType"></xs:element>
+      <xs:element name="DayOfWeek" type="day:DayOfWeekType" maxOccurs="1"></xs:element>
+      <xs:element name="date" type="xs:date" maxOccurs="1"></xs:element>
+      <xs:element name="Tasks" type="day:TasksType" maxOccurs="unbounded"></xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="DayOfWeekType">

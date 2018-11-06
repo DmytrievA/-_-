@@ -10,10 +10,10 @@
     </xs:sequence>
 </xs:complexType>
     <xs:complexType name="ReminderType">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="state" type="rem:StateType"></xs:element>
             <xs:element name="time" type="xs:dateTime"></xs:element>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
     <xs:simpleType name="StateType">
     <xs:restriction base="xs:unsignedShort">

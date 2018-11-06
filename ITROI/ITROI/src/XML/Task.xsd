@@ -8,7 +8,7 @@
   <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"></xs:import>
   <xs:import schemaLocation="Reminder.xsd" namespace="http://www.itroi.org/reminder"></xs:import>
   <xs:element name="Task" type="task:TaskType"/>
-  <xs:complexType name="TaskType">
+  <xs:complexType name="TaskType" >
     <xs:sequence>
       <xs:element type="xs:string" name="title"/>
       <xs:element type="xs:date" name="date"/>
@@ -16,6 +16,7 @@
       <xs:element type="xs:time" name="duration"></xs:element>
       <xs:element type="xs:string" name="description"/>
       <xs:element type="user:userType" name="user"/>
+
       <xs:element type="rem:RemindersType" name="reminders"></xs:element>
     </xs:sequence>
   </xs:complexType>
