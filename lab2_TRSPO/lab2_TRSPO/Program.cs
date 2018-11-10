@@ -16,8 +16,7 @@ namespace lab2_TRSPO
             int N = Convert.ToInt32(Console.ReadLine());
             var fam = new BirdFamily(N);
         }
-
-        
+       
     }
 
 
@@ -45,22 +44,26 @@ namespace lab2_TRSPO
 
         public void Eat(object mom)
         {
+            Thread mother = (Thread)mom;
             while (true)
             {
-                Console.WriteLine($"{Thread.CurrentThread.Name} is eating");
-                food -= Math.Abs((new Random()).Next() % 15) + 1;
-                Console.WriteLine($"Food: {food}");
-                Thread.Sleep(100);
-
                 if (food <= 0)
                 {
                     lock (locker)
                     {
-                        if(food<=0)
-                            ((Thread)mom).Start();
+                        if (food <= 0)
+                        {
+                            if(mother.ThreadState == ThreadState.AbortReq)
+                                 mother.Start();
+                            mother.Join();
+                        }
                     }
                 }
-                
+
+                Console.WriteLine($"{Thread.CurrentThread.Name} is eating");
+                food -= Math.Abs((new Random()).Next() % 15) + 1;
+                Console.WriteLine($"Food: {food}");
+                Thread.Sleep(100);
             }
         }
 
@@ -70,7 +73,7 @@ namespace lab2_TRSPO
             Thread.Sleep(1000);
             Console.WriteLine("Мать вернулась с едой");
             food += Math.Abs((new Random()).Next() % 100) + 100;
-            Thread.CurrentThread.Abort();
+            Thread.CurrentThread.Interrupt();
         }
     }
 }
