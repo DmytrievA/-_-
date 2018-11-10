@@ -1,0 +1,6 @@
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\bin\Debug\lab2_TRSPO.exe.config
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\bin\Debug\lab2_TRSPO.exe
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\bin\Debug\lab2_TRSPO.pdb
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\obj\Debug\lab2_TRSPO.csprojResolveAssemblyReference.cache
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\obj\Debug\lab2_TRSPO.exe
+E:\srudio_workspace\-_-\lab2_TRSPO\lab2_TRSPO\obj\Debug\lab2_TRSPO.pdb
