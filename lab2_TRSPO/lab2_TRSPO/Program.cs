@@ -12,9 +12,19 @@ namespace lab2_TRSPO
         
         static void Main(string[] args)
         {
+            //Thread temp = new Thread(DoWork);
+            ////temp.Start();
+            //Console.WriteLine(TimeSpan.MaxValue);
+            //Console.WriteLine(temp.ThreadState);
+            //Console.ReadKey();
             Console.Write("Input bird number: ");
             int N = Convert.ToInt32(Console.ReadLine());
             var fam = new BirdFamily(N);
+        }
+
+        static void DoWork()
+        {
+            Thread.Sleep(TimeSpan.MaxValue);
         }
        
     }
@@ -53,17 +63,23 @@ namespace lab2_TRSPO
                     {
                         if (food <= 0)
                         {
-                            if(mother.ThreadState == ThreadState.AbortReq)
-                                 mother.Start();
-                            mother.Join();
+                            lock (locker)
+                            {
+                                mother = new Thread(new ThreadStart(MakeFood));
+                                mother.Start();
+                                mother.Join();
+                            }
                         }
                     }
                 }
-
-                Console.WriteLine($"{Thread.CurrentThread.Name} is eating");
-                food -= Math.Abs((new Random()).Next() % 15) + 1;
-                Console.WriteLine($"Food: {food}");
-                Thread.Sleep(100);
+                lock (locker)
+                {
+                    Console.WriteLine($"{Thread.CurrentThread.Name} is eating");
+                    food -= Math.Abs((new Random()).Next() % 15) + 1;
+                    Console.WriteLine($"Food: {food}");
+                }
+                Thread.Sleep(500);
+                
             }
         }
 
@@ -73,7 +89,6 @@ namespace lab2_TRSPO
             Thread.Sleep(1000);
             Console.WriteLine("Мать вернулась с едой");
             food += Math.Abs((new Random()).Next() % 100) + 100;
-            Thread.CurrentThread.Interrupt();
         }
     }
 }
