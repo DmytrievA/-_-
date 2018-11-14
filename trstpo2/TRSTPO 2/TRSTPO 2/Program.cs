@@ -13,7 +13,7 @@ namespace TRSTPO_2
         static void Main(string[] args)
         {
 
-            int i = 1000;
+            int i = 10;
 
             Car cars = new Car(i);
             cars.Start();
@@ -83,7 +83,7 @@ namespace TRSTPO_2
                         bridge.SwitchDirection(dir);
                     }
                     Console.WriteLine("Машина по направлению " + dir.ToString() + " Заехала на мост");
-                    Thread.Sleep(10000);
+                    Thread.Sleep(2000);
 
                     lock (locker)
                     {
