@@ -73,7 +73,8 @@ void makeDiagonalMatrix(double** matrix, int size)
 		for (int rows = iteration+1;rows < size;rows++)
 		{
 			double koef = matrix[rows][iteration]/matrix[iteration][iteration];
-
+			omp_set_num_threads(4);
+			#pragma omp parallel for 
 			for (int columns = iteration;columns < size + 1;columns++)
 			{
 				matrix[rows][columns] -= matrix[iteration][columns] * koef;
@@ -85,6 +86,8 @@ void makeDiagonalMatrix(double** matrix, int size)
 		for (int rows = iteration - 1;rows >=0;rows--)
 		{
 			double koef = matrix[rows][iteration] / matrix[iteration][iteration];
+			omp_set_num_threads(4);
+			#pragma omp parallel for
 			for (int columns = size;columns >=rows;columns--)
 			{
 				matrix[rows][columns] -= matrix[iteration][columns] * koef;
@@ -106,6 +109,8 @@ void showAnswer(double** matrix, int size)
 
 void makeAnswer(double** matrix, int size)
 {
+	omp_set_num_threads(4);
+	#pragma omp parallel for
 	for (int i = 0;i < size;i++)
 	{
 		matrix[i][i] = matrix[i][size] / matrix[i][i];
@@ -114,6 +119,8 @@ void makeAnswer(double** matrix, int size)
 
 void copyMatrix(double** sourceM, double** destM,int size)
 {
+	omp_set_num_threads(4);
+	#pragma omp parallel for
 	for (int i = 0;i < size;i++)
 	{
 		for (int j = 0;j < size + 1;j++)
@@ -128,6 +135,8 @@ bool checkAnswer(double** res, double** matrix, int size)
 	for (int i = 0;i < size;i++)
 	{
 		double sum = 0;
+		omp_set_num_threads(4);
+		#pragma omp parallel for shared(sum)
 		for (int j = 0;j < size;j++)
 		{
 			sum += matrix[i][j] * res[j][j];
