@@ -1,9 +1,9 @@
 <user:user xmlns:user="http://www.itroi.org/user">
-  <user:id>1</user:id>
-  <user:name>string</user:name>
+
+  <user:name id="1" ></user:name>
   <user:surname>string</user:surname>
   <user:email>string</user:email>
   <user:login>string</user:login>
-  <user:password>string</user:password>
+  <user:password>string11</user:password>
   <user:gender>female</user:gender>
 </user:user>

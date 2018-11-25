@@ -5,19 +5,27 @@
             xmlns:user="http://www.itroi.org/user"
             xmlns:task="http://www.itroi.org/task"
             xmlns:rem="http://www.itroi.org/reminder">
-  <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"></xs:import>
-  <xs:import schemaLocation="Reminder.xsd" namespace="http://www.itroi.org/reminder"></xs:import>
+  <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"/>
+  <xs:import schemaLocation="Reminder.xsd" namespace="http://www.itroi.org/reminder"/>
   <xs:element name="Task" type="task:TaskType"/>
+  <xs:complexType name="statusType" >
+          <xs:choice>
+            <xs:element type="xs:time" name="finished"/>
+            <xs:element type="xs:time" name="expired"/>
+            <xs:element type="xs:time" name="countdown"/>
+          </xs:choice>
+  </xs:complexType>
   <xs:complexType name="TaskType" >
     <xs:sequence>
       <xs:element type="xs:string" name="title"/>
       <xs:element type="xs:date" name="date"/>
       <xs:element type="xs:time" name="time"/>
-      <xs:element type="xs:time" name="duration"></xs:element>
+      <xs:element type="xs:time" name="duration"/>
       <xs:element type="xs:string" name="description"/>
+      <xs:element type="task:statusType" name="status"/>
       <xs:element type="user:userType" name="user"/>
 
-      <xs:element type="rem:RemindersType" name="reminders"></xs:element>
+      <xs:element type="rem:RemindersType" name="reminders"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
