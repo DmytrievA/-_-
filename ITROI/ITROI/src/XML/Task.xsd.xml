@@ -4,13 +4,16 @@
   <task:time>02:18:33</task:time>
   <task:duration>20:27:14+03:00</task:duration>
   <task:description>string</task:description>
+  <task:status>
+    <task:countdown> 02:12:32</task:countdown>
+  </task:status>
   <task:user>
-    <user:user_id>5</user:user_id>
-    <user:name>string</user:name>
+    <user:name id="3">string</user:name>
     <user:surname>string</user:surname>
     <user:email>string</user:email>
     <user:login>string</user:login>
-    <user:password>string</user:password>
+    <user:password>string11</user:password>
+    <user:gender>male</user:gender>
   </task:user>
   <task:reminders>
     <rem:reminder>

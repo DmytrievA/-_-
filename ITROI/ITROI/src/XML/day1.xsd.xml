@@ -2,6 +2,7 @@
   <day:DayOfWeek>Friday</day:DayOfWeek>
   <day:date>2007-10-26</day:date>
   <day:Tasks>
+    <!--1 or more repetitions:-->
     <day:Task>
       <task:title>string</task:title>
       <task:date>2004-02-14</task:date>
@@ -9,19 +10,26 @@
       <task:duration>04:02:49+03:00</task:duration>
       <task:description>string</task:description>
       <task:status>
-        <task:expired>23:05:19</task:expired>
+        <!--You have a CHOICE of the next 3 items at this level-->
+        <task:finished>10:01:03+02:00</task:finished>
+        <task:expired>18:46:32+03:00</task:expired>
+        <task:countdown>16:56:29+02:00</task:countdown>
       </task:status>
       <task:user>
-        <user:name id="2">string</user:name>
+        <user:name id="5" role="user">string</user:name>
+        <!--Optional:-->
         <user:surname>string</user:surname>
+        <!--Optional:-->
         <user:email>string</user:email>
         <user:login>string</user:login>
-        <user:password>string11</user:password>
+        <user:password>stringst</user:password>
+        <!--Optional:-->
+        <user:gender>string</user:gender>
       </task:user>
       <task:reminders>
         <rem:reminder>
           <rem:state>1</rem:state>
-          <rem:time>2013-12-21T13:32:42+02:00</rem:time>
+          <rem:time>2014-10-27T11:44:59</rem:time>
         </rem:reminder>
       </task:reminders>
     </day:Task>

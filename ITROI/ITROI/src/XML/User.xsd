@@ -2,41 +2,49 @@
 <xs:schema attributeFormDefault="unqualified"
            elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-targetNamespace="http://www.itroi.org/user"
-xmlns:lol="http://www.itroi.org/user"
-xmlns:task="http://www.itroi.org/task">
-  <xs:element name="user" type="lol:userType"/>
-  <xs:simpleType name="id">
-    <xs:restriction base="xs:unsignedShort">
-      <xs:maxInclusive value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="gender">
-      <xs:restriction base="xs:string">
-        <xs:pattern value="male|female"/>
-      </xs:restriction>
+           targetNamespace="http://www.itroi.org/user"
+           xmlns:lol="http://www.itroi.org/user">
+    <xs:element name="user" type="lol:userType"/>
+    <xs:complexType name="nameType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:unsignedShort" name="id" use="required" />
+                <xs:attribute type="lol:roleType" name="role" default="user" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="roleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="admin"/>
+            <xs:enumeration value="user"/>
+        </xs:restriction>
     </xs:simpleType>
-  <xs:simpleType name="password">
-  <xs:restriction base="xs:string">
-    <xs:length value="6"/>
-  </xs:restriction>
-</xs:simpleType>
-  <xs:simpleType name="login">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="6"/>
-      <xs:maxLength value="16"/>
-    </xs:restriction>
-  </xs:simpleType>
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="male|female"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:length value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="login">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6"/>
+            <xs:maxLength value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
 
-  <xs:complexType name="userType">
-    <xs:sequence>
-     <xs:element type="lol:id" name="id" maxOccurs="1"/>
-      <xs:element type="xs:string" name="name" maxOccurs="1"/>
-      <xs:element type="xs:string" name="surname" maxOccurs="1"/>
-      <xs:element type="xs:string" name="email" maxOccurs="1"/>
-      <xs:element type="lol:login" name="login" maxOccurs="1"/>
-      <xs:element type="lol:password" name="password" maxOccurs="1" />
-      <xs:element type="lol:gender" name="gender" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
+    <xs:complexType name="userType">
+        <xs:sequence>
+            <xs:element type="lol:nameType" name="name"/>
+            <xs:element type="xs:string" name="surname" minOccurs="0"/>
+            <xs:element type="xs:string" name="email" minOccurs="0"/>
+            <xs:element type="lol:login" name="login" />
+
+            <xs:element type="lol:password" name="password" />
+            <xs:element type="lol:gender" name="gender" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
