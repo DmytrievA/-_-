@@ -7,29 +7,59 @@
             <body>
                 <xsl:value-of select="day:DayOfWeek"/><br/>
                 <xsl:value-of select="day:date"/><br/>
-                <xsl:for-each select="day:Tasks/day:Task">
-                    <hr/>
-                    <strong><xsl:value-of select="task:title"/></strong><br/>
-                    <xsl:value-of select="task:date"/><br/>
-                    <xsl:value-of select="task:time"/><br/>
-                    <xsl:value-of select="task:duration"/><br/>
-                    <xsl:value-of select="task:description"/><br/>
-                    <p>Истекает в: </p>
-                    <xsl:value-of select="task:status/task:expired"/><br/>
+                <xsl:for-each select="day:Tasks">
+                    <xsl:apply-templates select ="day:Task">
+                        <xsl:sort select="task:time"/>
+                    </xsl:apply-templates>
                 </xsl:for-each>
             </body>
         </html>
     </xsl:template>
 
-    <xsl:template match="/day:Tasks">
+    <xsl:template match="/day:Day/day:Tasks/day:Task">
         <html>
-            <xsl:for-each select="day:Task">
-                <xsl:value-of select="task:title"/><br/>
-                <xsl:value-of select="task:date"/><br/>
-                <xsl:value-of select="task:time"/><br/>
-                <xsl:value-of select="task:duration"/><br/>
-                <xsl:value-of select="task:description"/><br/>
-            </xsl:for-each><br/>
+            <table border="2px">
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:title"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Date:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:date"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Time:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:time"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Duration:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:duration"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Desc:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:description"/>
+                    </td>
+                </tr>
+            </table>
         </html>
     </xsl:template>
 
