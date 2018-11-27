@@ -1,4 +1,6 @@
-<rem:Reminders xmlns:rem="http://www.itroi.org/reminder">
+<rem:Reminders xmlns:rem="http://www.itroi.org/reminder"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.itroi.org/reminder">
   <rem:reminder>
     <rem:state>0</rem:state>
     <rem:time>2007-10-26T09:36:28</rem:time>

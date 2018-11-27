@@ -1,6 +1,7 @@
-<?xml-stylesheet href = "day.xsl" type = "text/xsl" ?>
 <day:Day xmlns:day="http://www.itroi.org/day" xmlns:task="http://www.itroi.org/task"
-         xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder">
+         xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.itroi.org/day">
   <day:DayOfWeek>Friday</day:DayOfWeek>
   <day:date>2007-10-26</day:date>
   <day:Tasks>
