@@ -35,3 +35,4 @@
 # IntellijIdea files
 .idea/
 out/
+*.iml
