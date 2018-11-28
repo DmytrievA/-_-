@@ -33,5 +33,5 @@
 *.app
 
 # IntellijIdea files
-*TROI/ITROI/.idea/
-*TROI/ITROI/.out/
+TROI/ITROI/.idea/
+TROI/ITROI/.out/
