@@ -31,3 +31,7 @@
 *.exe
 *.out
 *.app
+
+# IntellijIdea files
+*TROI/ITROI/.idea
+*TROI/ITROI/.out
