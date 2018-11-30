@@ -3,12 +3,7 @@
            targetNamespace="http://www.itroi.org/reminder"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:rem="http://www.itroi.org/reminder">
-    <xs:element name="Reminders" type="rem:RemindersType"/>
-    <xs:complexType name="RemindersType">
-        <xs:sequence>
-            <xs:element name="reminder" type="rem:ReminderType"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="Reminder" type="rem:ReminderType"/>
     <xs:complexType name="ReminderType">
         <xs:all>
             <xs:element name="state" type="rem:StateType"/>

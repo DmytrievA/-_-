@@ -1,24 +1,34 @@
 <task:Task xmlns:task="http://www.itroi.org/task" xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder">
+  <task:id>5</task:id>
   <task:title>string</task:title>
   <task:date>2008-09-29</task:date>
   <task:time>02:18:33</task:time>
   <task:duration>20:27:14+03:00</task:duration>
   <task:description>string</task:description>
   <task:status>
-    <task:countdown> 02:12:32</task:countdown>
+
+    <task:countdown>16:00:34+03:00</task:countdown>
   </task:status>
   <task:user>
-    <user:name id="3">string</user:name>
+    <user:name id="5" role="user">string</user:name>
+    <!--Optional:-->
     <user:surname>string</user:surname>
+    <!--Optional:-->
     <user:email>string</user:email>
     <user:login>string</user:login>
-    <user:password>string11</user:password>
+    <user:password>stringst</user:password>
+    <!--Optional:-->
     <user:gender>male</user:gender>
   </task:user>
   <task:reminders>
-    <rem:reminder>
+    <!--1 to 5 repetitions:-->
+    <task:reminder>
       <rem:state>0</rem:state>
-      <rem:time>2013-05-22T04:02:49+03:00</rem:time>
-    </rem:reminder>
+      <rem:time>2016-02-20T16:56:29+02:00</rem:time>
+    </task:reminder>
+      <task:reminder>
+          <rem:state>0</rem:state>
+          <rem:time>2016-02-20T16:56:29+02:00</rem:time>
+      </task:reminder>
   </task:reminders>
 </task:Task>

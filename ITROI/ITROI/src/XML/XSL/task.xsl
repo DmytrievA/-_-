@@ -1,24 +1,29 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:day="http://www.itroi.org/day" xmlns:task="http://www.itroi.org/task"
                 xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder">
-
-    <xsl:template match="/day:Day">
+<xsl:import href="reminders.xsl"/>
+    <xsl:import href="user.xsl"/>
+    <xsl:template match="task:Task">
         <html>
             <body>
-                <xsl:value-of select="day:DayOfWeek"/><br/>
-                <xsl:value-of select="day:date"/><br/>
-                <xsl:for-each select="day:Tasks">
-                    <xsl:apply-templates select ="day:Task">
-                        <xsl:sort select="task:time"/>
-                    </xsl:apply-templates>
-                </xsl:for-each>
+                <xsl:call-template name="task">
+                </xsl:call-template>
             </body>
         </html>
+
     </xsl:template>
 
-    <xsl:template match="/day:Day/day:Tasks/day:Task">
-        <html>
+    <xsl:template name="task" >
+
             <table border="2px">
+                <tr>
+                    <td>
+                        Id:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:id"/>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         Name:
@@ -59,8 +64,41 @@
                         <xsl:value-of select="task:description"/>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Status:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:status"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        User:
+                    </td>
+                    <td>
+                        <xsl:call-template name ="user">
+                            <xsl:with-param name="user" select="task:user"/>
+                        </xsl:call-template>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                       Reminders:
+                    </td>
+                    <td>
+                        <xsl:for-each select="task:reminders/task:reminder">
+                            <xsl:call-template name="reminder">
+                            </xsl:call-template>
+                        </xsl:for-each>
+                    </td>
+                </tr>
+
             </table>
-        </html>
+<br/>
+        <br/>
+        <br/>
     </xsl:template>
 
 </xsl:stylesheet>
