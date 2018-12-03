@@ -21,7 +21,7 @@
                         Id:
                     </td>
                     <td>
-                        <xsl:value-of select="task:id"/>
+                        <xsl:value-of select="@id"/>
                     </td>
                 </tr>
                 <tr>
@@ -41,6 +41,15 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        DayOfWeek:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:DayOfWeek"/>
+                    </td>
+                </tr>
+                <tr>
+
                     <td>
                         Time:
                     </td>
@@ -66,6 +75,14 @@
                 </tr>
                 <tr>
                     <td>
+                        StatusId:
+                    </td>
+                    <td>
+                        <xsl:value-of select="task:status/@id"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Status:
                     </td>
                     <td>
@@ -74,12 +91,23 @@
                 </tr>
                 <tr>
                     <td>
+                        UserId:
+                    </td>
+                    <td>
+
+                            <xsl:value-of select="task:user/@id"/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         User:
                     </td>
                     <td>
+                        <xsl:for-each select="task:user/task:userValue">
                         <xsl:call-template name ="user">
-                            <xsl:with-param name="user" select="task:user"/>
                         </xsl:call-template>
+                        </xsl:for-each>
                     </td>
                 </tr>
 

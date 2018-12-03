@@ -1,6 +1,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:day="http://www.itroi.org/day" xmlns:task="http://www.itroi.org/task"
-                xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder"
+
+                xmlns:user="http://www.itroi.org/user" xmlns:group="http://www.itroi.org/group"
                 xmlns:xsi="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="/user:user">
@@ -13,15 +13,15 @@
         </html>
     </xsl:template>
 
-    <xsl:template match="user" name="user" >
-    <xsl:param name="user"/>
+    <xsl:template  name="user" >
+
             <table border="2px">
                 <tr>
                     <td>
                         Id:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:name/@id"/>
+                        <xsl:value-of select="@id"/>
                     </td>
                 </tr>
                 <tr>
@@ -29,7 +29,7 @@
                         Role:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:name/@role"/>
+                        <xsl:value-of select="@role"/>
                     </td>
                 </tr>
                 <tr>
@@ -37,50 +37,98 @@
                         Name:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:name"/>
+                        <xsl:value-of select="user:name"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Date:
+                        Surname:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:surname"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Time:
-                    </td>
-                    <td>
-                        <xsl:value-of select="$user/user:login"/>
+                        <xsl:value-of select="user:surname"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Duration:
+                        Login:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:email"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Desc:
-                    </td>
-                    <td>
-                        <xsl:value-of select="$user/user:password"/>
+                        <xsl:value-of select="user:login"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Status:
+                        Email:
                     </td>
                     <td>
-                        <xsl:value-of select="$user/user:gender"/>
+                        <xsl:value-of select="user:email"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        <xsl:value-of select="user:password"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender:
+                    </td>
+                    <td>
+                        <xsl:value-of select="user:gender"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        MemberOfGroups:
+                    </td>
+                    <td>
+                        <xsl:for-each select="user:memberOfGroups/user:memberOfGroup">
+                        <xsl:call-template name="memberOfGroups"/>
+                        </xsl:for-each>
                     </td>
                 </tr>
             </table>
+    </xsl:template>
+    <xsl:template  name="memberOfGroups" >
+
+        <table border="2px">
+            <tr>
+                <td>
+                    Id:
+                </td>
+                <td>
+                    <xsl:value-of select="user:group/@id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NameOfGroup:
+                </td>
+                <td>
+                    <xsl:value-of select="user:group/group:name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GroupRoleId:
+                </td>
+                <td>
+                    <xsl:value-of select="user:groupRole/@id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GroupRoleName:
+                </td>
+                <td>
+                    <xsl:value-of select="user:groupRole/user:groupRoleName"/>
+                </td>
+            </tr>
+
+        </table>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -15,10 +15,26 @@
             <table border="2px">
                 <tr>
                     <td>
-                        State:
+                        Id:
                     </td>
                     <td>
-                        <xsl:value-of select="rem:state"/>
+                        <xsl:value-of select="@id"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TaskId:
+                    </td>
+                    <td>
+                        <xsl:value-of select="rem:taskId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TaskName:
+                    </td>
+                    <td>
+                        <xsl:value-of select="rem:taskName"/>
                     </td>
                 </tr>
                 <tr>

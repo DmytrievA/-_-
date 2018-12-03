@@ -1,34 +1,47 @@
-<task:Task xmlns:task="http://www.itroi.org/task" xmlns:user="http://www.itroi.org/user" xmlns:rem="http://www.itroi.org/reminder">
-  <task:id>5</task:id>
+<task:Task id="1" xmlns:task="http://www.itroi.org/task" xmlns:user="http://www.itroi.org/user" xmlns:gro="http://www.itroi.org/group" xmlns:rem="http://www.itroi.org/reminder">
   <task:title>string</task:title>
   <task:date>2008-09-29</task:date>
-  <task:time>02:18:33</task:time>
-  <task:duration>20:27:14+03:00</task:duration>
+  <!--Optional:-->
+  <task:DayOfWeek>Monday</task:DayOfWeek>
+  <task:time>20:44:14</task:time>
+  <!--Optional:-->
+  <task:duration>07:36:46+02:00</task:duration>
   <task:description>string</task:description>
-  <task:status>
+  <task:status id="1">
+    <!--You have a CHOICE of the next 3 items at this level-->
 
-    <task:countdown>16:00:34+03:00</task:countdown>
+    <task:countdown>18:46:32+03:00</task:countdown>
   </task:status>
-  <task:user>
-    <user:name id="5" role="user">string</user:name>
+  <task:user id="1">
     <!--Optional:-->
-    <user:surname>string</user:surname>
-    <!--Optional:-->
-    <user:email>string</user:email>
-    <user:login>string</user:login>
-    <user:password>stringst</user:password>
-    <!--Optional:-->
-    <user:gender>male</user:gender>
+    <task:userValue id="1" role="admin">
+      <user:name>string</user:name>
+      <!--Optional:-->
+      <user:surname>string</user:surname>
+      <user:email>string</user:email>
+      <user:login>string</user:login>
+      <user:password>stringst</user:password>
+      <!--Optional:-->
+      <user:gender>string</user:gender>
+      <user:memberOfGroups>
+        <!--0 to 10 repetitions:-->
+        <user:memberOfGroup>
+          <user:group id="1">
+            <gro:name>string</gro:name>
+          </user:group>
+          <user:groupRole id="1">
+            <user:groupRoleName>OneToAnyone</user:groupRoleName>
+          </user:groupRole>
+        </user:memberOfGroup>
+      </user:memberOfGroups>
+    </task:userValue>
   </task:user>
   <task:reminders>
     <!--1 to 5 repetitions:-->
-    <task:reminder>
-      <rem:state>0</rem:state>
-      <rem:time>2016-02-20T16:56:29+02:00</rem:time>
+    <task:reminder id="1">
+      <rem:taskName>string</rem:taskName>
+      <rem:time>2010-03-18T18:05:32</rem:time>
+      <rem:taskId>5</rem:taskId>
     </task:reminder>
-      <task:reminder>
-          <rem:state>0</rem:state>
-          <rem:time>2016-02-20T16:56:29+02:00</rem:time>
-      </task:reminder>
   </task:reminders>
 </task:Task>

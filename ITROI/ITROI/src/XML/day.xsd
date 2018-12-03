@@ -9,7 +9,7 @@
     <xs:element name="tasks" type="tasks:TasksType"/>
     <xs:complexType name="TasksType">
         <xs:sequence>
-            <xs:element name="Task" type="task:TaskType" maxOccurs="unbounded"/>
+            <xs:element name="task" type="task:TaskType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

@@ -1,12 +1,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:day="http://www.itroi.org/day">
+                xmlns:tasks="http://www.itroi.org/tasks">
 <xsl:import href="task.xsl"/>
-    <xsl:template match="/">
+    <xsl:template match="tasks:tasks">
         <html>
             <body>
-                <xsl:value-of select="day:Day/day:DayOfWeek"/><br/>
-                <xsl:value-of select="day:Day/day:date"/><br/>
-                <xsl:for-each select="day:Day/day:Tasks/day:Task">
+                <xsl:for-each select="tasks:task">
                     <xsl:call-template name ="task">
                     </xsl:call-template>
                 </xsl:for-each>

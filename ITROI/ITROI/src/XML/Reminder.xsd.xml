@@ -1,4 +1,5 @@
-<rem:Reminder xmlns:rem="http://www.itroi.org/reminder">
-  <rem:state>0</rem:state>
-  <rem:time>2007-10-26T09:36:28</rem:time>
+<rem:Reminder id="5" xmlns:rem="http://www.itroi.org/reminder">
+  <rem:taskName>string</rem:taskName>
+  <rem:time>2008-09-29T04:49:45</rem:time>
+  <rem:taskId>5</rem:taskId>
 </rem:Reminder>
