@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.itroi.org/task"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:user="http://www.itroi.org/user"
+           xmlns:task="http://www.itroi.org/task"
+           xmlns:rem="http://www.itroi.org/reminder"
+           xmlns:entity="http://www.itroi.org/entity">
+    <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"/>
+    <xs:import schemaLocation="Reminder.xsd" namespace="http://www.itroi.org/reminder"/>
+    <xs:import schemaLocation="Entity.xsd" namespace="http://www.itroi.org/entity"/>
+    <xs:element name="Task" type="task:TaskType"/>
+    <xs:complexType name="statusType">
+        <xs:complexContent>
+        <xs:extension base="entity:Entity">
+        <xs:choice>
+            <xs:element type="xs:time" name="finished"/>
+            <xs:element type="xs:time" name="expired"/>
+            <xs:element type="xs:time" name="countdown"/>
+        </xs:choice>
+        </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TaskType">
+        <xs:complexContent>
+        <xs:extension base="entity:Entity">
+        <xs:sequence>
+            <xs:element type="xs:string" name="title"/>
+            <xs:element type="xs:date" name="date"/>
+            <xs:element type="task:DayOfWeekType" name="DayOfWeek" minOccurs="0"/>
+            <xs:element type="xs:time" name="time"/>
+            <xs:element type="xs:time" name="duration" minOccurs="0"/>
+            <xs:element type="xs:string" name="description"/>
+            <xs:element type="task:statusType" name="status"/>
+            <xs:element type="task:userType" name="user" maxOccurs="1"/>
+            <xs:element type="task:RemindersType" name="reminders"/>
+        </xs:sequence>
+        </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="userType">
+        <xs:complexContent>
+        <xs:extension base="entity:Entity">
+        <xs:sequence>
+            <xs:element type="user:userType" name="userValue" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RemindersType">
+        <xs:sequence>
+            <xs:element type="rem:ReminderType" name="reminder" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="DayOfWeekType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Monday"/>
+            <xs:enumeration value="Tuesday"/>
+            <xs:enumeration value="Wednesday"/>
+            <xs:enumeration value="Thursday"/>
+            <xs:enumeration value="Friday"/>
+            <xs:enumeration value="Saturday"/>
+            <xs:enumeration value="Sunday"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
