@@ -7,7 +7,6 @@
 
 
 package org.itroi.entity;
-
 import javax.xml.bind.annotation.XmlRegistry;
 
 
