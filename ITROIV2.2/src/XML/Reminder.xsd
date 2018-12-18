@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://www.itroi.org/reminder"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rem="http://www.itroi.org/reminder"
+           xmlns:entity="http://www.itroi.org/entity">
+    <xs:import schemaLocation="Entity.xsd" namespace="http://www.itroi.org/entity"/>
+    <xs:element name="Reminder" type="rem:ReminderType"/>
+    <xs:complexType name="ReminderType">
+        <xs:complexContent>
+            <xs:extension base="entity:Entity">
+                <xs:all>
+                   <!-- <xs:element name="state" type="rem:stateType"/>-->
+                    <xs:element name="taskName" type="xs:string"/>
+                    <xs:element name="time" type="xs:dateTime"/>
+                    <xs:element name="taskId">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:unsignedShort">
+                                <xs:minInclusive value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+ <!--
+        <xs:complexType name="stateType">
+            <xs:complexContent>
+                <xs:extension base="entity:Entity">
+                    <xs:sequence>
+                        <xs:element name="stateValue" minOccurs="1">
+                            <xs:simpleType>
+                            <xs:restriction base="xs:unsignedShort">
+                                <xs:enumeration value="1"/>
+                                <xs:enumeration value="0"/>
+                            </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+  -->
+    </xs:schema>
