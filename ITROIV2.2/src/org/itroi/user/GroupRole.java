@@ -45,6 +45,30 @@ public class GroupRole
     @XmlElement(required = true)
     protected String groupRoleName;
 
+    public GroupRole(int id, String groupRoleName) {
+        super(id);
+        this.groupRoleName = groupRoleName;
+    }
+
+    public GroupRole(String groupRoleName) {
+        this.groupRoleName = groupRoleName;
+    }
+
+    public GroupRole(int id) {
+        super(id);
+    }
+
+    public GroupRole() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("GroupRole").append('\n');
+        s.append(super.toString()).append('\n')
+                .append(groupRoleName).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the groupRoleName property.
      * 

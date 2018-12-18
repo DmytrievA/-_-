@@ -45,6 +45,21 @@ public class StatusType
     @XmlElement(required = true)
     protected String name;
 
+    public StatusType(String name) {
+        this.name = name;
+    }
+
+    public StatusType() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("StatusType").append('\n');
+        s.append(super.toString()).append('\n')
+                .append(name).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the name property.
      * 

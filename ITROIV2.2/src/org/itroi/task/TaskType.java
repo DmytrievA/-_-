@@ -83,6 +83,38 @@ public class TaskType
     protected RemindersType reminders;
     protected GivenTask givenTask;
 
+    public TaskType(String title, Date date, long time, long duration, String description, StatusType status, UserType user, RemindersType reminders, GivenTask givenTask) {
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.duration = duration;
+        this.description = description;
+        this.status = status;
+        this.user = user;
+        this.reminders = reminders;
+        this.givenTask = givenTask;
+    }
+
+    public TaskType() {
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("TaskType").append('\n')
+                .append(super.toString()).append('\n')
+                .append(title).append('\n')
+                .append(description).append('\n')
+                .append(date.toString()).append('\n')
+                .append(title).append('\n')
+                .append(duration).append('\n')
+                .append(status.getName()).append('\n')
+                .append(user.getEmail()).append('\n')
+                .append(reminders.toString()).append('\n');
+        if(givenTask != null)
+                s.append(givenTask.toString()).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the title property.
      * 
@@ -297,21 +329,6 @@ public class TaskType
      */
     public void setGivenTask(GivenTask value) {
         this.givenTask = value;
-    }
-
-    public String toString(){
-        String s = "Task{" +
-                "title='" + title + '\'' +'\n'+
-//                ", time=" + time.toString() +
-              //  ", duration='" + duration.toString() + '\'' +
-        //        ", date=" + date.toString() +
-                " description=" + description + '\n'+
-                " status=" + status.getName() +'\n'+
-                " user=" + user.getEmail() +'\n'+
-                " reminder=" + reminders.toString() +'\n'+
-//                ", givenTask=" + givenTask.getMentor() +
-                '}';
-return s;
     }
 
 }

@@ -43,9 +43,24 @@ public class RemindersType {
 
     @XmlElement(required = true)
     protected List<ReminderType> reminder;
-public RemindersType(){
+    public RemindersType(){
 reminder = new ArrayList<ReminderType>();
 }
+
+    public RemindersType(List<ReminderType> reminder) {
+        this.reminder = reminder;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("RemindersType").append('\n');
+        for (ReminderType r :
+                reminder) {
+            s.append(r.toString()).append('\n');
+        }
+        return s.toString();
+    }
+
     /**
      * Gets the value of the reminder property.
      * 

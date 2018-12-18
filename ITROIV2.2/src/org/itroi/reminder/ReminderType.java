@@ -60,6 +60,25 @@ public class ReminderType
     protected Date time;
     protected int taskId;
 
+    public ReminderType(String taskName, Date time, int taskId) {
+        this.taskName = taskName;
+        this.time = time;
+        this.taskId = taskId;
+    }
+
+    public ReminderType() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("ReminderRype").append('\n');
+        s.append(super.toString()).append('\n')
+                .append(taskName).append('\n')
+                .append(taskId).append('\n')
+                .append(time.toString()).append('\n');
+        return super.toString();
+    }
+
     /**
      * Gets the value of the taskName property.
      * 

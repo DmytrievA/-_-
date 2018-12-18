@@ -71,6 +71,34 @@ public class GivenTask {
     @XmlElement(required = true)
     protected GroupType group;
 
+    public GivenTask(XMLGregorianCalendar finishDate, String mentor, String file, String result, String comments, String taskDoc, RateLevel level, GroupType group) {
+        this.finishDate = finishDate;
+        this.mentor = mentor;
+        this.file = file;
+        this.result = result;
+        this.comments = comments;
+        this.taskDoc = taskDoc;
+        this.level = level;
+        this.group = group;
+    }
+
+    public GivenTask() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res =  new StringBuilder();
+        res.append(finishDate.toString()).append("\n")
+                .append(mentor).append("\n")
+                .append(file).append("\n")
+                .append(result).append("\n")
+                .append(comments).append("\n")
+                .append(taskDoc).append("\n")
+                .append(level.name).append("\n")
+                .append(group.getId()).append("\n");
+        return res.toString();
+    }
+
     /**
      * Gets the value of the finishDate property.
      * 

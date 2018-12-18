@@ -53,6 +53,20 @@ public class Entity {
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
+    public Entity(int id) {
+        this.id = id;
+    }
+
+    public Entity() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("Entity").append('\n');
+        s.append(id).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the id property.
      * 

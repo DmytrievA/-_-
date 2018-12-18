@@ -47,6 +47,22 @@ public class MemberOfGroup {
     @XmlElement(required = true)
     protected GroupRole groupRole;
 
+    public MemberOfGroup(GroupType group, GroupRole groupRole) {
+        this.group = group;
+        this.groupRole = groupRole;
+    }
+
+    public MemberOfGroup() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("MmberOfGroup").append('\n');
+        s.append(groupRole.toString()).append('\n')
+                .append(group.toString()).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the group property.
      * 

@@ -44,6 +44,20 @@ public class UserType
     @XmlElement(required = true)
     protected org.itroi.user.UserType userValue;
 
+    public UserType(org.itroi.user.UserType userValue) {
+        this.userValue = userValue;
+    }
+
+    public UserType() {
+    }
+
+    @Override
+    public String toString() {
+        if( userValue == null)
+            return "No user found in TASK";
+        return userValue.toString();
+    }
+
     /**
      * Gets the value of the userValue property.
      * 

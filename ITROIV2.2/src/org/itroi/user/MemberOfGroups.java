@@ -42,6 +42,23 @@ public class MemberOfGroups {
 
     protected List<MemberOfGroup> memberOfGroup;
 
+    public MemberOfGroups(List<MemberOfGroup> memberOfGroup) {
+        this.memberOfGroup = memberOfGroup;
+    }
+
+    public MemberOfGroups() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("MemberOfGroups").append('\n');
+        for (MemberOfGroup member :
+                memberOfGroup) {
+            s.append(member.toString()).append('\n');
+        }
+        return s.toString();
+    }
+
     /**
      * Gets the value of the memberOfGroup property.
      * 

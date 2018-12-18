@@ -46,6 +46,18 @@ public class TasksType {
 public TasksType(){
     task = new ArrayList<TaskType>();
 }
+
+    public TasksType(List<TaskType> task) {
+        this.task = task;
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("[\n");
+        task.forEach(el -> s.append(el.toString()).append("\n"));
+        s.append("]");
+        return s.toString();
+    }
     /**
      * Gets the value of the task property.
      * 
@@ -76,13 +88,6 @@ public TasksType(){
             task = new ArrayList<TaskType>();
         }
         return this.task;
-    }
-    public String toString(){
-        StringBuffer s = new StringBuffer();
-        s.append("[\n");
-        task.forEach(el -> s.append(el.toString()).append("\n"));
-        s.append("]");
-        return s.toString();
     }
 
 }

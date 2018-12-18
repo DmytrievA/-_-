@@ -51,6 +51,22 @@ public class GroupType
     @XmlElement(required = true)
     protected String name;
 
+    public GroupType() {
+    }
+
+    public GroupType(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("GroupType").append('\n')
+                .append(super.toString()).append('\n')
+                .append(name).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the name property.
      * 
@@ -73,12 +89,5 @@ public class GroupType
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    public GroupType() {
-    }
-
-    public GroupType(String name) {
-        this.name = name;
     }
 }

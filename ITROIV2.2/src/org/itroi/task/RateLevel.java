@@ -45,6 +45,21 @@ public class RateLevel
     @XmlElement(required = true)
     protected String name;
 
+    public RateLevel(String name) {
+        this.name = name;
+    }
+
+    public RateLevel() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("RateLevel").append('\n');
+        s.append(super.toString()).append('\n')
+                .append(name).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the name property.
      * 

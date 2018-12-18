@@ -43,6 +43,20 @@ public class EntityUser {
     @XmlAttribute(name = "email", required = true)
     protected String email;
 
+    public EntityUser(String email) {
+        this.email = email;
+    }
+
+    public EntityUser() {
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("EntityUser").append('\n');
+        s.append(email).append('\n');
+        return s.toString();
+    }
+
     /**
      * Gets the value of the email property.
      * 
