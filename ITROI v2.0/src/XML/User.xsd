@@ -5,18 +5,15 @@
            targetNamespace="http://www.itroi.org/user"
            xmlns:lol="http://www.itroi.org/user"
            xmlns:entity="http://www.itroi.org/entity"
+           xmlns:entityUser="http://www.itroi.org/entityUser"
            xmlns:group="http://www.itroi.org/group">
+    <xs:import schemaLocation="EntityUser.xsd" namespace="http://www.itroi.org/entityUser"/>
     <xs:import schemaLocation="Entity.xsd" namespace="http://www.itroi.org/entity"/>
     <xs:import schemaLocation="Groups.xsd" namespace="http://www.itroi.org/group"/>
     <xs:element name="user" type="lol:userType"/>
 
 
-    <xs:simpleType name="roleType">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="admin"/>
-            <xs:enumeration value="user"/>
-        </xs:restriction>
-    </xs:simpleType>
+
 
     <xs:simpleType name="gender">
         <xs:restriction base="xs:string">
@@ -37,21 +34,26 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:complexType name="userType">
         <xs:complexContent>
-            <xs:extension base="entity:Entity">
-
+            <xs:extension base="entityUser:EntityUser">
                 <xs:sequence>
                     <xs:element type="xs:string" name="name"/>
                     <xs:element type="xs:string" name="surname" minOccurs="0"/>
-                    <xs:element type="xs:string" name="email"/>
+                    <xs:element type="lol:email" name="email"/>
                     <xs:element type="lol:login" name="login"/>
 
                     <xs:element type="lol:password" name="password"/>
                     <xs:element type="lol:gender" name="gender" minOccurs="0"/>
                     <xs:element type="lol:memberOfGroups" name="memberOfGroups"/>
                 </xs:sequence>
-                <xs:attribute type="lol:roleType" name="role" use="optional"/>
+                <xs:attribute type="xs:string" name="role" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -70,16 +72,10 @@
                <xs:complexContent>
                    <xs:extension base="entity:Entity">
                        <xs:sequence>
-                           <xs:element type="lol:groupRoleName" name="groupRoleName"/>
+                           <xs:element type="xs:string" name="groupRoleName"/>
                        </xs:sequence>
                    </xs:extension>
                </xs:complexContent>
     </xs:complexType>
-<xs:simpleType name="groupRoleName">
-    <xs:restriction base="xs:string">
-        <xs:enumeration value="OneToAll"/>
-        <xs:enumeration value="OneToSelf"/>
-        <xs:enumeration value="OneToAnyone"/>
-    </xs:restriction>
-</xs:simpleType>
+
 </xs:schema>

@@ -10,7 +10,7 @@
     </xs:complexType>
     <xs:simpleType name="idType">
         <xs:restriction base="xs:unsignedShort">
-            <xs:maxInclusive value="1"/>
+            <xs:minInclusive value="1"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

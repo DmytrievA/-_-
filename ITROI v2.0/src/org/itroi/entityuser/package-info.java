@@ -5,5 +5,5 @@
 // Generated on: 2018.12.18 at 04:52:56 AM EET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.itroi.org/task", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package org.itroi.task;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.itroi.org/entityUser")
+package org.itroi.entityuser;

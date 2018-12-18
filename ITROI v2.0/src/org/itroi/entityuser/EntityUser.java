@@ -6,34 +6,26 @@
 //
 
 
-package org.itroi.group;
+package org.itroi.entityuser;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import org.itroi.entity.Entity;
 
 
 /**
- * <p>Java class for GroupType complex type.
+ * <p>Java class for EntityUser complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GroupType">
+ * &lt;complexType name="EntityUser">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.itroi.org/entity}Entity">
- *       &lt;sequence>
- *         &lt;element name="name">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;minLength value="6"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;attribute name="email" use="required" type="{http://www.itroi.org/entityUser}emailType" />
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -41,38 +33,38 @@ import org.itroi.entity.Entity;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GroupType", propOrder = {
-    "name"
+@XmlType(name = "EntityUser")
+@XmlSeeAlso({
+    org.itroi.task.UserType.class,
+    org.itroi.user.UserType.class
 })
-public class GroupType
-    extends Entity
-{
+public class EntityUser {
 
-    @XmlElement(required = true)
-    protected String name;
+    @XmlAttribute(name = "email", required = true)
+    protected String email;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setEmail(String value) {
+        this.email = value;
     }
 
 }

@@ -6,7 +6,7 @@
 //
 
 
-package org.itroi.group;
+package org.itroi.task;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,22 +16,16 @@ import org.itroi.entity.Entity;
 
 
 /**
- * <p>Java class for GroupType complex type.
+ * <p>Java class for rateLevel complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GroupType">
+ * &lt;complexType name="rateLevel">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.itroi.org/entity}Entity">
  *       &lt;sequence>
- *         &lt;element name="name">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;minLength value="6"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -41,10 +35,10 @@ import org.itroi.entity.Entity;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GroupType", propOrder = {
+@XmlType(name = "rateLevel", propOrder = {
     "name"
 })
-public class GroupType
+public class RateLevel
     extends Entity
 {
 

@@ -6,18 +6,15 @@
 //
 
 
-package org.itroi.group;
+package org.itroi.entityuser;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.itroi.group package. 
+ * generated in the org.itroi.entityuser package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -31,30 +28,20 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Group_QNAME = new QName("http://www.itroi.org/group", "Group");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.itroi.group
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.itroi.entityuser
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link GroupType }
+     * Create an instance of {@link EntityUser }
      * 
      */
-    public GroupType createGroupType() {
-        return new GroupType();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GroupType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.itroi.org/group", name = "Group")
-    public JAXBElement<GroupType> createGroup(GroupType value) {
-        return new JAXBElement<GroupType>(_Group_QNAME, GroupType.class, null, value);
+    public EntityUser createEntityUser() {
+        return new EntityUser();
     }
 
 }
