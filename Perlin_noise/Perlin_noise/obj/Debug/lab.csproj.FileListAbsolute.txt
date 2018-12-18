@@ -1,0 +1,9 @@
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.exe.config
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.exe
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\bin\Debug\Perlin_noise.pdb
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\lab.csprojAssemblyReference.cache
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.Properties.Resources.resources
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\lab.csproj.GenerateResource.cache
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\lab.csproj.CoreCompileInputs.cache
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.exe
+C:\Users\Никита\Desktop\-_-\Perlin_noise\Perlin_noise\obj\Debug\Perlin_noise.pdb

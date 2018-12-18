@@ -1,0 +1,9 @@
+﻿  Source.cpp
+c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(63): warning C4473: "printf": передано недостаточно аргументов для строки формата
+  c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(63): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(63): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%d"
+c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(128): warning C4474: "printf" : для строки формата передано слишком много аргументов
+  c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(128): note: заполнители и их параметры ожидают переменное число аргументов в количестве 1, но было предоставлено 2
+c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(91): warning C4101: inittime: неиспользованная локальная переменная
+c:\users\никита\desktop\-_-\трстполаб3\trstpo3\trstpo3\source.cpp(91): warning C4101: totaltime: неиспользованная локальная переменная
+  TRStPO3.vcxproj -> C:\Users\Никита\Desktop\-_-\ТРСТПОлаб3\TRStPO3\Debug\TRStPO3.exe
