@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.itroi.org/user"
+           xmlns:lol="http://www.itroi.org/user"
+           xmlns:entity="http://www.itroi.org/entity"
+           xmlns:entityUser="http://www.itroi.org/entityUser"
+           xmlns:group="http://www.itroi.org/group">
+    <xs:import schemaLocation="EntityUser.xsd" namespace="http://www.itroi.org/entityUser"/>
+    <xs:import schemaLocation="Entity.xsd" namespace="http://www.itroi.org/entity"/>
+    <xs:import schemaLocation="Groups.xsd" namespace="http://www.itroi.org/group"/>
+    <xs:element name="user" type="lol:userType"/>
+
+
+
+
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="male|female"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:length value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="login">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6"/>
+            <xs:maxLength value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="userType">
+        <xs:complexContent>
+            <xs:extension base="entityUser:EntityUser">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="surname" minOccurs="0"/>
+                    <xs:element type="lol:email" name="email"/>
+                    <xs:element type="lol:login" name="login"/>
+
+                    <xs:element type="lol:password" name="password"/>
+                    <xs:element type="lol:gender" name="gender" minOccurs="0"/>
+                    <xs:element type="lol:memberOfGroups" name="memberOfGroups"/>
+                </xs:sequence>
+                <xs:attribute type="xs:string" name="role" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="memberOfGroup">
+        <xs:sequence>
+            <xs:element type="group:GroupType" name="group"/>
+            <xs:element type="lol:groupRole" name="groupRole"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="memberOfGroups">
+        <xs:sequence>
+            <xs:element type="lol:memberOfGroup" name="memberOfGroup" minOccurs="0" maxOccurs="10"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="groupRole">
+               <xs:complexContent>
+                   <xs:extension base="entity:Entity">
+                       <xs:sequence>
+                           <xs:element type="xs:string" name="groupRoleName"/>
+                       </xs:sequence>
+                   </xs:extension>
+               </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

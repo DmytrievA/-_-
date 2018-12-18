@@ -57,8 +57,9 @@ public class Util {
         return givenTask;
     }
 
-    public static org.itroi.user.UserType cteateUserUser(){
-        org.itroi.user.UserType userType = new org.itroi.user.UserType();
+    public static org.itroi.user.UserType createUserUser(){
+        org.itroi.user.UserType userType = new org.itroi.user.UserType("1@com.ua","name","surname",
+                "string@mail.com","loginefw","password","male",createMemberOfGroups(),"user");
         return userType;
     }
 
@@ -94,21 +95,23 @@ public class Util {
     }
 
     public static GroupRole createGroupRole(){
-        GroupRole groupRole = new GroupRole();
+        GroupRole groupRole = new GroupRole(1,"pidor");
         return groupRole;
     }
 
     public static MemberOfGroup createMemberOfGroup(){
-        MemberOfGroup memberOfGroup = new MemberOfGroup();
+        MemberOfGroup memberOfGroup = new MemberOfGroup(createGroup(),createGroupRole());
         return memberOfGroup;
     }
     public static MemberOfGroups createMemberOfGroups(){
         MemberOfGroups memberOfGroups = new MemberOfGroups();
+        memberOfGroups.getMemberOfGroup().add(createMemberOfGroup());
+
         return memberOfGroups;
     }
 
     public static GroupType createGroup(){
-        GroupType groupType = new GroupType();
+        GroupType groupType = new GroupType(1,"loxfweewg");
         return groupType;
     }
 }

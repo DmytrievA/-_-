@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tasks xmlns="http://www.itroi.org/tasks">
+    <task id="1">
+        <title xmlns="http://www.itroi.org/task">lol</title>
+        <date xmlns="http://www.itroi.org/task">Tue Dec 18 08:27:48 EET 2018</date>
+        <time xmlns="http://www.itroi.org/task">0</time>
+        <duration xmlns="http://www.itroi.org/task">1545114468205</duration>
+        <description xmlns="http://www.itroi.org/task">lalaley</description>
+        <status id="1" xmlns="http://www.itroi.org/task">
+            <name>new</name>
+        </status>
+        <user email="strong@frk.com" xmlns="http://www.itroi.org/task"/>
+        <reminders xmlns="http://www.itroi.org/task">
+            <reminder id="2">
+                <taskName xmlns="http://www.itroi.org/reminder">lol</taskName>
+                <time xmlns="http://www.itroi.org/reminder">Tue Dec 18 08:27:48 EET 2018</time>
+                <taskId xmlns="http://www.itroi.org/reminder">1</taskId>
+            </reminder>
+        </reminders>
+    </task>
+</tasks>

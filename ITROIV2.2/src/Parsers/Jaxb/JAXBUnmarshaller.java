@@ -1,6 +1,7 @@
 package Parsers.Jaxb;
 
 import org.itroi.tasks.TasksType;
+import org.itroi.user.UserType;
 
 
 import javax.xml.bind.JAXBContext;
@@ -10,21 +11,22 @@ import java.io.File;
 
 public class JAXBUnmarshaller  {
 
-	public TasksType unmarshal(String filePath) {
+	public UserType unmarshal(String filePath) {
 		try {
 			File file=new File(filePath);
-			JAXBContext jaxbContext = JAXBContext.newInstance(TasksType.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(UserType.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			return (TasksType) jaxbUnmarshaller.unmarshal(file);
+			return (UserType) jaxbUnmarshaller.unmarshal(file);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
+
 	public static void main(String[] arg) {
 		JAXBUnmarshaller jaxbUnmarshaller = new JAXBUnmarshaller();
-		TasksType tasks = jaxbUnmarshaller.unmarshal("src/jaxb.xml");
+		UserType tasks =  jaxbUnmarshaller.unmarshal("src/jaxb.xml");
 		System.out.println(tasks.toString());
 	}
 }

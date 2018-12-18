@@ -11,12 +11,8 @@ package org.itroi.user;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+
 import org.itroi.entityuser.EntityUser;
 
 
@@ -48,77 +44,249 @@ import org.itroi.entityuser.EntityUser;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "userType", propOrder = {
-    "rest"
+        "name",
+        "surname",
+        "email",
+        "login",
+        "password",
+        "gender",
+        "memberOfGroups"
 })
+@XmlRootElement(name="user")
 public class UserType
-    extends EntityUser
+        extends EntityUser
 {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "memberOfGroups", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "email", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "gender", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "surname", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "password", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "name", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "login", namespace = "http://www.itroi.org/user", type = JAXBElement.class, required = false)
-    })
-    protected List<JAXBElement<?>> rest;
+    @XmlElement(required = true)
+    protected String name;
+    protected String surname;
+    @XmlElement(required = true)
+    protected String email;
+    @XmlElement(required = true)
+    protected String login;
+    @XmlElement(required = true)
+    protected String password;
+    protected String gender;
+    @XmlElement(required = true)
+    protected MemberOfGroups memberOfGroups;
     @XmlAttribute(name = "role")
     protected String role;
 
+    public UserType(String email, String name, String surname, String email1, String login, String password, String gender, MemberOfGroups memberOfGroups, String role) {
+        super(email);
+        this.name = name;
+        this.surname = surname;
+        this.email = email1;
+        this.login = login;
+        this.password = password;
+        this.gender = gender;
+        this.memberOfGroups = memberOfGroups;
+        this.role = role;
+    }
+
+    public UserType(String name, String surname, String email, String login, String password, String gender, MemberOfGroups memberOfGroups, String role) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.gender = gender;
+        this.memberOfGroups = memberOfGroups;
+        this.role = role;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder s = new StringBuilder("USER TYPE").append('\n');
+        s.append(email).append('\n')
+                .append(login).append('\n')
+                .append(password).append('\n')
+                .append(name).append('\n')
+                .append(surname).append('\n')
+                .append(role).append('\n')
+                .append(gender).append('\n')
+                .append(memberOfGroups.toString()).append('\n');
+        return s.toString();
+    }
+
+    public UserType() {
+    }
+
     /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Email" is used by two different parts of a schema. See: 
-     * line 49 of file:/C:/labs/-_-/ITROI%20v2.0/src/XML/User.xsd
-     * line 8 of file:/C:/labs/-_-/ITROI%20v2.0/src/XML/EntityUser.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
-     * Gets the value of the rest property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rest property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRest().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link MemberOfGroups }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * 
-     * 
+     * Gets the value of the name property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
      */
-    public List<JAXBElement<?>> getRest() {
-        if (rest == null) {
-            rest = new ArrayList<JAXBElement<?>>();
-        }
-        return this.rest;
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setName(String value) {
+        this.name = value;
+    }
+
+    /**
+     * Gets the value of the surname property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * Sets the value of the surname property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setSurname(String value) {
+        this.surname = value;
+    }
+
+    /**
+     * Gets the value of the email property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the value of the email property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setEmail(String value) {
+        this.email = value;
+    }
+
+    /**
+     * Gets the value of the login property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getLogin() {
+        return login;
+    }
+
+    /**
+     * Sets the value of the login property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setLogin(String value) {
+        this.login = value;
+    }
+
+    /**
+     * Gets the value of the password property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the value of the password property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setPassword(String value) {
+        this.password = value;
+    }
+
+    /**
+     * Gets the value of the gender property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * Sets the value of the gender property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setGender(String value) {
+        this.gender = value;
+    }
+
+    /**
+     * Gets the value of the memberOfGroups property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MemberOfGroups }
+     *
+     */
+    public MemberOfGroups getMemberOfGroups() {
+        return memberOfGroups;
+    }
+
+    /**
+     * Sets the value of the memberOfGroups property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MemberOfGroups }
+     *
+     */
+    public void setMemberOfGroups(MemberOfGroups value) {
+        this.memberOfGroups = value;
     }
 
     /**
      * Gets the value of the role property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRole() {
         return role;
@@ -126,11 +294,11 @@ public class UserType
 
     /**
      * Sets the value of the role property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link String }
-     *     
+     *     {@link String}
+     *
      */
     public void setRole(String value) {
         this.role = value;

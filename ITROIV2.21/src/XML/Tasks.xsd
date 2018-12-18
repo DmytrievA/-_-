@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://www.itroi.org/tasks"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tasks="http://www.itroi.org/tasks"
+           xmlns:task="http://www.itroi.org/task">
+    <xs:import schemaLocation="Task.xsd" namespace="http://www.itroi.org/task"/>
+    <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"/>
+    <xs:element name="tasks" type="tasks:TasksType"/>
+    <xs:complexType name="TasksType">
+        <xs:sequence>
+            <xs:element name="task" type="task:TaskType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

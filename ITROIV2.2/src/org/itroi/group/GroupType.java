@@ -58,6 +58,11 @@ public class GroupType
         this.name = name;
     }
 
+    public GroupType(int id, String name) {
+        super(id);
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();

@@ -1,0 +1,21 @@
+<user:user email="string" role="string" xmlns:user="http://www.itroi.org/user" xmlns:gro="http://www.itroi.org/group">
+  <user:name>string</user:name>
+  <!--Optional:-->
+  <user:surname>string</user:surname>
+  <user:email>string</user:email>
+  <user:login>string</user:login>
+  <user:password>stringst</user:password>
+  <!--Optional:-->
+  <user:gender>string</user:gender>
+  <user:memberOfGroups>
+    <!--0 to 10 repetitions:-->
+    <user:memberOfGroup>
+      <user:group id="1">
+        <gro:name>string</gro:name>
+      </user:group>
+      <user:groupRole id="1">
+        <user:groupRoleName>string</user:groupRoleName>
+      </user:groupRole>
+    </user:memberOfGroup>
+  </user:memberOfGroups>
+</user:user>

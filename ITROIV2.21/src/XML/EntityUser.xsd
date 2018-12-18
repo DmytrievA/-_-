@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.itroi.org/entityUser"
+            elementFormDefault="qualified"
+           xmlns:entity="http://www.itroi.org/entityUser">
+
+    <xs:complexType name="EntityUser">
+        <xs:attribute type ="entity:emailType" name="email" use="required">
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

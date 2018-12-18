@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.itroi.org/task"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:user="http://www.itroi.org/user"
+           xmlns:task="http://www.itroi.org/task"
+           xmlns:rem="http://www.itroi.org/reminder"
+           xmlns:entity="http://www.itroi.org/entity"
+           xmlns:entityUser="http://www.itroi.org/entityUser"
+           xmlns:group="http://www.itroi.org/group">
+    <xs:import schemaLocation="User.xsd" namespace="http://www.itroi.org/user"/>
+    <xs:import schemaLocation="Reminder.xsd" namespace="http://www.itroi.org/reminder"/>
+    <xs:import schemaLocation="Entity.xsd" namespace="http://www.itroi.org/entity"/>
+    <xs:import schemaLocation="EntityUser.xsd" namespace="http://www.itroi.org/entityUser"/>
+    <xs:import schemaLocation="Groups.xsd" namespace="http://www.itroi.org/group"/>
+    <xs:element name="Task" type="task:TaskType"/>
+    <xs:complexType name="statusType">
+        <xs:complexContent>
+            <xs:extension base="entity:Entity">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TaskType">
+        <xs:complexContent>
+            <xs:extension base="entity:Entity">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element type="xs:date" name="date"/>
+                    <xs:element type="xs:time" name="time"/>
+                    <xs:element type="xs:time" name="duration" minOccurs="0"/>
+                    <xs:element type="xs:string" name="description"/>
+                    <xs:element type="task:statusType" name="status"/>
+                    <xs:element type="task:userType" name="user" maxOccurs="1"/>
+                    <xs:element type="task:RemindersType" name="reminders"/>
+                    <xs:element type="task:givenTask" name="givenTask" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="userType">
+        <xs:complexContent>
+            <xs:extension base="entityUser:EntityUser">
+                <xs:sequence>
+                <xs:element type="user:userType" name="userValue"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RemindersType">
+        <xs:sequence>
+            <xs:element type="rem:ReminderType" name="reminder" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="givenTask">
+        <xs:sequence>
+            <xs:element type="xs:date" name="finishDate"/>
+            <xs:element type="user:email" name="mentor"/>
+            <xs:element type="xs:string" name="file"/>
+            <xs:element type="xs:string" name="result"/>
+            <xs:element type="xs:string" name="comments"/>
+            <xs:element type="xs:string" name="taskDoc"/>
+            <xs:element type="task:rateLevel" name="level"/>
+            <xs:element type="group:GroupType" name="group"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rateLevel">
+        <xs:complexContent>
+            <xs:extension base="entity:Entity">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

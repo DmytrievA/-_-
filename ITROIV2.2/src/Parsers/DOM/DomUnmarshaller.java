@@ -1,14 +1,14 @@
 package Parsers.DOM;
 
+import org.itroi.task.TaskType;
+import org.itroi.task.UserType;
+import org.itroi.tasks.TasksType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-/*
-import ua.nure.bookshop.entity.Book;
-import ua.nure.bookshop.entity.BookShop;
-import ua.nure.bookshop.entity.Category;
-import ua.nure.bookshop.parser.BookUnmarshaller;
+
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomUnmarshaller implements BookUnmarshaller {
+public class DomUnmarshaller  {
 
     private static final String BS_NS = "http://nure.ua/bookShop";
 
@@ -26,23 +26,23 @@ public class DomUnmarshaller implements BookUnmarshaller {
         System.out.println(bookShop);
     }
 
-    @Override
-    public BookShop unmarshal(String filePath) {
-        BookShop bookShop = new BookShop();
+
+    public TasksType unmarshal(String filePath) {
+        TasksType tasks = new TasksType();
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File(filePath));
             if (doc != null) {
-                Element bookShopElement = doc.getDocumentElement();
-                if (bookShopElement != null) {
-                    NodeList bookNodeList = bookShopElement.getChildNodes();
-                    for (int i = 0; i < bookNodeList.getLength(); i++) {
-                        if (bookNodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                            Book book = parseBook((Element) bookNodeList.item(i));
-                            if (book != null) {
-                                bookShop.getBook().add(book);
+                Element tasksElement = doc.getDocumentElement();
+                if (tasksElement != null) {
+                    NodeList tasksNodeList = tasksElement.getChildNodes();
+                    for (int i = 0; i < tasksNodeList.getLength(); i++) {
+                        if (tasksNodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                            TaskType task = parseTask((Element) tasksNodeList.item(i));
+                            if (task != null) {
+                                tasks.getTask().add(task);
                             }
                         }
                     }
@@ -51,20 +51,33 @@ public class DomUnmarshaller implements BookUnmarshaller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return bookShop;
+        return tasks;
     }
 
-    private Book parseBook(Element bookElement) {
-        Book book = new Book();
-        book.setId(Integer.parseInt(bookElement.getAttribute("id")));
-        book.setTitle(getValue(bookElement, "title"));
-        book.getAuthor().addAll(getValues(bookElement, "author"));
-        book.setISBN(getValue(bookElement, "ISBN"));
-        book.setPrice(Double.parseDouble(getValue(bookElement, "price")));
-        book.setCategory(Category.fromValue(getValue(bookElement, "category")));
+    private TaskType parseTask(Element TaskElement) {
+        TaskType task = new TaskType();
+        task.setId(Integer.parseInt(TaskElement.getAttribute("id")));
+        task.setTitle(getValue(TaskElement, "title"));
+        task.setTime(Integer.parseInt(getValue(TaskElement,"time")));
+        NodeList nodeList = TaskElement.getElementsByTagName("user");
+                for (int i = 0; i < nodeList.getLength(); i++) {
+                    if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                        TaskType task = parseTask((Element) nodeList.item(i));
+                        if (task != null) {
+                            tasks.getTask().add(task);
+                        }
+                    }
+                }
+            }
+        }
+        task.setPrice(Double.parseDouble(getValue(TaskElement, "price")));
+        task.setCategory(Category.fromValue(getValue(TaskElement, "category")));
         return book;
     }
-
+private UserType parseUser(Element TaskElement){
+        UserType userType =new UserType();
+        userType.setEmail();
+}
     private List<String> getValues(Element parent, String nodeName) {
         List<String> values = new ArrayList<>();
         NodeList elements = parent.getElementsByTagNameNS(BS_NS, nodeName);
@@ -82,5 +95,5 @@ public class DomUnmarshaller implements BookUnmarshaller {
     private String getValue(Element parent, String nodeName) {
         return getValues(parent, nodeName).get(0);
     }
-}*/
+}
 
