@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user xmlns="http://www.itroi.org/user" xmlns:ns2="http://www.itroi.org/group" xmlns:ns3="http://www.itroi.org/task" xmlns:ns4="http://www.itroi.org/reminder" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" role="user" email="1@com.ua" xsi:schemaLocation="http://www.itroi.org/user ../../XML/User.xsd">
+    <name>name</name>
+    <surname>surname</surname>
+    <email>string@mail.com</email>
+    <login>loginefw</login>
+    <password>password</password>
+    <gender>male</gender>
+    <memberOfGroups>
+        <memberOfGroup>
+            <group id="1">
+                <ns2:name>loxfweewg</ns2:name>
+            </group>
+            <groupRole id="1">
+                <groupRoleName>pidor</groupRoleName>
+            </groupRole>
+        </memberOfGroup>
+    </memberOfGroups>
+</user>

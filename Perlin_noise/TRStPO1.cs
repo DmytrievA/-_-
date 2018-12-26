@@ -8,29 +8,7 @@ using System.Diagnostics;
 
 namespace lab1
 {   // MAIN ----------------------------------
-    // var noise = new PerlinNoise();
-    
-    //var watch = Stopwatch.StartNew();
-
-    // noise.Noise();
-
-    //watch.Stop();
-    //Console.WriteLine(watch.ElapsedMilliseconds);
-    //Console.ReadKey();
-
-    // noise.SavePicture();
-    
-    //ParalelPerlinNiose noise2 = new ParalelPerlinNiose();
-    //watch.Restart();
-
-    //noise2.ParalelNoise();
-
-    //watch.Stop();
-    //Console.WriteLine(watch.ElapsedMilliseconds);
-    //Console.ReadKey();
-    //noise2.GlueToOne();
-    //noise2.SavePicture();
-    //Console.ReadKey();
+   
     //---------------------------------------------
 
     public struct DPoint

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.itroi.org/entity"
+            elementFormDefault="qualified"
+           xmlns:entity="http://www.itroi.org/entity">
+
+    <xs:complexType name="Entity">
+        <xs:attribute type ="entity:idType" name="id" use="required">
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="idType">
+        <xs:restriction base="xs:unsignedShort">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

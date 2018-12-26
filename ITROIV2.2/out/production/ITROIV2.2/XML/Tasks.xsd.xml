@@ -1,0 +1,46 @@
+<tas:tasks xmlns:tas="http://www.itroi.org/tasks" xmlns:task="http://www.itroi.org/task" xmlns:user="http://www.itroi.org/user" xmlns:gro="http://www.itroi.org/group" xmlns:rem="http://www.itroi.org/reminder">
+  <!--1 or more repetitions:-->
+  <tas:task id="1">
+    <task:title></task:title>
+    <task:date>2008-09-29</task:date>
+    <task:time>02:18:33</task:time>
+    <!--Optional:-->
+    <task:duration>20:27:14+03:00</task:duration>
+    <task:description></task:description>
+    <task:status id="1">
+      <task:name>string</task:name>
+    </task:status>
+    <task:user email="string">
+      <task:userValue email="string" role="string">
+        <user:name>string</user:name>
+        <!--Optional:-->
+        <user:surname>string</user:surname>
+        <user:email>string</user:email>
+        <user:login>string</user:login>
+        <user:password>stringst</user:password>
+        <!--Optional:-->
+        <user:gender>string</user:gender>
+        <user:memberOfGroups>
+          <!--0 to 10 repetitions:-->
+          <user:memberOfGroup>
+            <user:group id="1">
+              <gro:name>string</gro:name>
+            </user:group>
+            <user:groupRole id="1">
+              <user:groupRoleName>string</user:groupRoleName>
+            </user:groupRole>
+          </user:memberOfGroup>
+        </user:memberOfGroups>
+      </task:userValue>
+    </task:user>
+    <task:reminders>
+      <!--1 to 5 repetitions:-->
+      <task:reminder id="1">
+        <rem:taskName>string</rem:taskName>
+        <rem:time>2009-05-16T15:42:28</rem:time>
+        <rem:taskId>5</rem:taskId>
+      </task:reminder>
+    </task:reminders>
+
+  </tas:task>
+</tas:tasks>
