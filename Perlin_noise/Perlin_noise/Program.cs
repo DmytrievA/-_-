@@ -16,6 +16,8 @@ namespace TRSTPO
         
         static void Main(string[] args)
         {
+            
+           
             CentralObject central = new CentralObject();
             ChildObject[] children = new ChildObject[20];
             for (int i = 0; i < 20; i++)
@@ -23,72 +25,37 @@ namespace TRSTPO
                 children[i] = new ChildObject(central);
             }
             central.Link(children);
+            DateTime one1 = DateTime.Now;
+            
             //------ Для централизованной обработки ---------
-            //for (; ; )
-            //{
-            //    central.CentralDataProcessing();
-            //    Thread[] threads = new Thread[20];
-            //    for (int i = 0; i < 20; i++)
-            //    {
-            //        threads[i] = new Thread(children[i].ChildSend);
-            //        threads[i].Start();
-            //    }
-            //    Console.WriteLine($"Кол-во блоков на локальных компьюетрах: {children[19].Blocks}");
-            //    for (int i = 0; i < 20; i++)
-            //    {
-            //        threads[i].Join();
-            //    }
-            //    if (central.Blocks == 0)
-            //        break;
-            //    Thread.Sleep(100);
-            //}
+            for (; ; )
+            {
+                central.CentralDataProcessing();
+                Thread[] threads = new Thread[20];
+                for (int i = 0; i < 20; i++)
+                {
+                    threads[i] = new Thread(children[i].ChildSend);
+                    threads[i].Start();
+                }
+                //Console.WriteLine($"Кол-во блоков на локальных компьюетрах: {children[19].Blocks}");
+                for (int i = 0; i < 20; i++)
+                {
+                    threads[i].Join();
+                }
+                if (central.Blocks == 0)
+                    break;
+                Thread.Sleep(100);
+            }
             //Console.ReadKey();
             //-----------------------------------------------
+            DateTime two1 = DateTime.Now;
+            for (int i = 0; i < 20; i++)
+            {
+                children[i].Blocks = 17;
+            }
+            DateTime one2 = DateTime.Now;
 
-            //------------Для предварительной обработки------
-            //for (; ; )
-            //{
-            //    central.CentralDataProcessing();
-            //    if (children[19].Blocks != 20)
-            //    {
-            //        if (children[19].Blocks > 16)
-            //        {
-            //            central.CentralSend();
-            //            Console.WriteLine($"Кол-во блоков на локальных компьюетрах после отправки с главного: {children[19].Blocks}");
-            //        }
-
-            //    }
-
-            //    Thread[] threads = new Thread[40];
-            //    for (int i = 0; i < 20; i++)
-            //    {
-            //        threads[i] = new Thread(children[i].ChildDataProcessing);
-            //        threads[i].Start();
-            //    }
-            //    //Console.WriteLine($"Кол-во блоков на локальных компьюетрах: {children[19].Blocks}");
-            //    for (int i = 0; i < 20; i++)
-            //    {
-            //        threads[i].Join();
-            //    }
-            //    if (children[19].CountTacts == 41)
-            //    {
-            //        for (int i = 20; i < 40; i++)
-            //        {
-            //            threads[i] = new Thread(children[i - 20].ChildSend);
-            //            threads[i].Start();
-            //        }
-            //        Console.WriteLine($"Кол-во блоков на локальных компьюетрах после начала отправки: {children[19].Blocks}");
-            //        for (int i = 20; i < 40; i++)
-            //        {
-            //            threads[i - 20].Join();
-            //        }
-            //    }
-
-            //    if (central.Blocks == 0 && children[19].CountTacts == 41)
-            //        break;
-            //    Thread.Sleep(100);
-            //}
-            //--------------Для нашей параллельной-----------
+            ////------------Для предварительной обработки------
             for (; ; )
             {
                 central.CentralDataProcessing();
@@ -97,7 +64,58 @@ namespace TRSTPO
                     if (children[19].Blocks > 16)
                     {
                         central.CentralSend();
-                        Console.WriteLine($"Кол-во блоков на локальных компьюетрах после отправки с главного: {children[19].Blocks}");
+                        //Console.WriteLine($"Кол-во блоков на локальных компьюетрах после отправки с главного: {children[19].Blocks}");
+                    }
+
+                }
+
+                Thread[] threads = new Thread[40];
+                for (int i = 0; i < 20; i++)
+                {
+                    threads[i] = new Thread(children[i].ChildDataProcessing);
+                    threads[i].Start();
+                }
+                //Console.WriteLine($"Кол-во блоков на локальных компьюетрах: {children[19].Blocks}");
+                for (int i = 0; i < 20; i++)
+                {
+                    threads[i].Join();
+                }
+                if (children[19].CountTacts == 41)
+                {
+                    for (int i = 20; i < 40; i++)
+                    {
+                        threads[i] = new Thread(children[i - 20].ChildSend);
+                        threads[i].Start();
+                    }
+                    //Console.WriteLine($"Кол-во блоков на локальных компьюетрах после начала отправки: {children[19].Blocks}");
+                    for (int i = 20; i < 40; i++)
+                    {
+                        threads[i - 20].Join();
+                    }
+                }
+
+                if (central.Blocks == 0 && children[19].CountTacts == 41)
+                    break;
+                Thread.Sleep(100);
+            }
+            DateTime two2 = DateTime.Now;
+            for (int i = 0; i < 20; i++)
+            {
+                children[i].Blocks = 17;
+                children[i].CountTacts = 0;
+            }
+            DateTime one3 = DateTime.Now;
+            //--------------Для нашей параллельной-----------
+            for (; ; )
+            {
+
+                central.CentralDataProcessing();
+                if (children[19].Blocks != 20)
+                {
+                    if (children[19].Blocks > 16)
+                    {
+                        central.CentralSend();
+                        //Console.WriteLine($"Кол-во блоков на локальных компьюетрах после отправки с главного: {children[19].Blocks}");
                         children[0].Blocks -= 1;
                         children[1].Blocks -= 1;
                     }
@@ -123,7 +141,7 @@ namespace TRSTPO
                         threads[i] = new Thread(children[i - 20].ChildSend);
                         threads[i].Start();
                     }
-                    Console.WriteLine($"Кол-во блоков на локальных компьюетрах после начала отправки: {children[19].Blocks}");
+                    //Console.WriteLine($"Кол-во блоков на локальных компьюетрах после начала отправки: {children[19].Blocks}");
                     for (int i = 22; i < 40; i++)
                     {
                         threads[i - 20].Join();
@@ -139,7 +157,11 @@ namespace TRSTPO
                     break;
                 Thread.Sleep(100);
             }
-
+            DateTime two3 = DateTime.Now;
+            Console.WriteLine($"Результат по централизованной обработке: {two1 - one1}");
+            Console.WriteLine($"Результат по предварительной обработке: {two2 - one2}");
+            Console.WriteLine($"Результат по паралельной обработке: {two3 - one3}");
+            Console.ReadKey();
         }
     }
 
@@ -174,9 +196,9 @@ namespace TRSTPO
                 lock (obj)
                 {
                     Blocks--;
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                 }
-                Console.WriteLine($"Центральный компьютер обработал 1 блок, осталось {Blocks}");
+                //Console.WriteLine($"Центральный компьютер обработал 1 блок, осталось {Blocks}");
             }
         }
         
@@ -187,11 +209,7 @@ namespace TRSTPO
                 Children[i] = A[i];
             }
         }
-        public void Start()
-        {
-            
-            
-        }
+        
 
     }
     class ChildObject

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3428a3d4-7092-4f74-992f-4bf4c2d94385" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/.vs/lab/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/bin/Debug/Perlin_noise.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/bin/Debug/Perlin_noise.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/bin/Debug/Perlin_noise.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/bin/Debug/Perlin_noise.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/DesignTimeResolveAssemblyReferences.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/DesignTimeResolveAssemblyReferences.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/Perlin_noise.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/Perlin_noise.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/Perlin_noise.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Perlin_noise/Perlin_noise/obj/Debug/Perlin_noise.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/Web.Debug.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/Web.Release.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/Web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/WebApplication1.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/WebApplication1.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/obj/Debug/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication1/packages.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/Web.Debug.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/Web.Release.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/Web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/WebApplication2.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/WebApplication2.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/obj/Debug/WebApplication2.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perlin_noise/WebApplication2/packages.config" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="209" />
+    <option name="y" value="-17" />
+    <option name="width" value="654" />
+    <option name="height" value="788" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3428a3d4-7092-4f74-992f-4bf4c2d94385" name="Default Changelist" comment="" />
+      <created>1545883537612</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1545883537612</updated>
+      <workItem from="1545883539967" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+</project>
